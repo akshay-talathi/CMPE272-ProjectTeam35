@@ -13,7 +13,7 @@ var customers = require('./routes/customers');
 var app = express();
 var connection  = require('express-myconnection'); 
 //var mysql = require('mysql');
-var sess=null;
+var sess=null;	
 // all environments
 app.set('port', process.env.PORT || 4300);
 app.set('views', path.join(__dirname, 'views'));
@@ -39,8 +39,12 @@ app.use(function(req, res, next) {
 	  next();
 	});
 app.post('/badge/login', customers.logindo);
-app.get('/', customers.login);
+app.get('/', customers.test);
 app.get('/scan', customers.scan);
+app.get('/test', customers.login);
+app.get('/home', customers.home);
+app.options('/badge/login', customers.options);
+app.get('/verify/:email', customers.verify);
 
 app.use(app.router);
 http.createServer(app).listen(app.get('port'), function(){
