@@ -1,0 +1,7 @@
+
+.tile-3 {
+    background-image: url("/resources/pivotal/images/partners-logo-gray.png");
+}
+.tile-3:hover {
+    background-image: url("/resources/pivotal/images/partners-logo-teal.png");
+}
