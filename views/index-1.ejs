@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta content="QR Code scanner" name="description">
+    <meta content="qrcode,qr code,scanner,barcode,javascript" name="keywords">
+    <meta content="English" name="language">
+    <meta content="Lazar Laszlo (c) 2011" name="copyright">
+    <meta content="1 Days" name="Revisit-After">
+    <meta cont	ent="index, follow" name="robots">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+    <title>Scan Your Badge</title>
+    <style type="text/css">
+body{
+    width:100%;
+    text-align:center;
+    }
+    img{
+    border:0;
+    }
+    #main{
+    margin: 15px auto;
+    /*background-image: url("/images/Digital-security-access-denied-multi-coloured-locks.jpg");*/
+    }
+    #header{
+    background:white;
+    margin-bottom:15px;
+    }
+    #mainbody{
+    background-repeat: no-repeat;
+    /*background-image: url("/images/security-access.jpg");*/
+    /* background: white; */
+    width:100%;
+    /* display:none; */
+    }
+    #footer{
+    background:white;
+    }
+    #v{
+    width:320px;
+    height:235px;
+    }
+    #qr-canvas{
+    display:none;
+    }
+    #qrfile{
+    width:320px;
+    height:235px;
+    }
+    #mp1{
+    text-align:center;
+    font-size:35px;
+    }
+    #imghelp{
+    position:relative;
+    left:0px;
+    top:-160px;
+    z-index:100;
+    font:18px arial,sans-serif;
+    background:#f0f0f0;
+    margin-left:35px;
+    margin-right:35px;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-radius:20px;
+    }
+    .selector{
+    margin:0;
+    padding:0;
+    cursor:pointer;
+    margin-bottom:-5px;
+    }
+    #outdiv
+    {
+    width:480px;
+    height:240px;
+    border: solid;
+    border-width: 3px 3px 3px 3px;
+    }
+    #result{
+    border: 0px;
+    border-width: 1px 1px 1px 1px;
+    padding:20px;
+    width:100%;
+    }
+
+    ul{
+    margin-bottom:0;
+    margin-right:40px;
+    }
+    li{
+    display:inline;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    font-weight: bold;
+    border-right: 1px solid #333333;
+    }
+    li a{
+    text-decoration: none;
+    color: black;
+    }
+
+    #footer a{
+    color: black;
+    }
+    .tsel{
+    padding:0;
+     background-repeat: no-repeat;
+    /*background-image: url("../images/security-access.jpg");*/
+    }
+
+    </style>
+    <script src="/js/llqrcode.js" type="text/javascript"></script>
+<!-- <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script> -->
+
+    <script src="/js/webqr.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24451557-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    </script>
+    <title>Mamba - Free Bootstrap 3 one page template</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- css -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/stylesheets/style.css" rel="stylesheet" media="screen">
+	<link href="/stylesheets/default.css" rel="stylesheet" media="screen">
+	<script src="/js/modernizr.custom.js"></script>
+      </head>
+  <body>
+	<div class="menu-area">
+			<div id="dl-menu" class="dl-menuwrapper">
+						<button class="dl-trigger">Open Menu</button>
+						<ul class="dl-menu">
+							<li>
+								<a href="/">Login</a>
+							</li>
+							
+						</ul>
+					</div><!-- /dl-menuwrapper -->
+	</div>	
+
+	  <!-- intro area -->	  
+	  <div id="intro">
+	  
+			<div class=">
+				<div class="container">
+					<div class="row">
+					
+						
+					<div align="center">
+						<br><br><br><br><br><br>
+						<table border="0" class="tsel">
+                            <tr>
+                                <td><img align="left" class="selector" id=
+                                "webcamimg" onclick="setwebcam()" src=
+                                "vid.png" alt="Scan"></td>
+
+                                <td><img align="right" class="selector" id=
+                                "qrimg" onclick="setimg()"  alt="Upload" src="cam.png"></td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" colspan="2">
+                                    <div id="outdiv"></div>
+                                </td>
+                            </tr>
+                            <tr>
+	                    <td align="center" colspan="2">
+	                        <div id="result"></div>
+	                    </td>
+	                </tr>
+                        </table>
+					</div>
+					</div>
+				</div>
+		 	</div>
+			
+	 </div>
+	 <canvas height="600" id="qr-canvas" width="800"></canvas>
+    <script type="text/javascript">
+load();
+    </script>
+	 <!-- js -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.smooth-scroll.min.js"></script>
+	<script src="/js/jquery.dlmenu.js"></script>
+	<script src="/js/wow.min.js"></script>
+	<script src="/js/custom.js"></script>
+  	
+</html>
