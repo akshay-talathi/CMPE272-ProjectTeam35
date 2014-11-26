@@ -144,32 +144,55 @@ exports.scan = function(req, res){
 };
 
 exports.logindo = function(req, res){
-	var input = JSON.parse(JSON.stringify(req.body));
-	var connection = mysqldb.getConnection();
-	var data = {
-			email : input.email,
-			password : input.password,
-	};
-	connection.connect();
-	console.log(data);
-	var query = connection.query("SELECT * from user WHERE email = ? ", [data.email], function(err, rows){
-		if(err)
-			console.log("Error fecthing details : %s", err);
-		if(rows[0].password==data.password){
-//			sess = req.session;
-//			console.log(req.session);
-//			console.log(rows[0].firstName);
-//			sess.fname = rows[0].firstName;
-//			sess.lname = rows[0].lastName;
-//			sess.email = rows[0].email;
-			console.log(rows);
-			
-		}
-		else {
-			res.redirect('/');
-		}
-		console.log();
-	});
+	if (req.method === 'OPTIONS') {
+	      console.log('!OPTIONS');
+	      var headers = {};
+	      // IE8 does not allow domains to be specified, just the *
+	      // headers["Access-Control-Allow-Origin"] = req.headers.origin;
+	      headers["Access-Control-Allow-Origin"] = "*";
+	      headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+	      headers["Access-Control-Allow-Credentials"] = false;
+	      headers["Access-Control-Max-Age"] = '86400'; // 24 hours
+	      headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept";
+	      res.writeHead(200, headers);
+	      res.end();
+	} else {
+		console.log(req.body);
+		var input = JSON.parse(JSON.stringify(req.body));
+		var connection = mysqldb.getConnection();
+		var data = {
+				email : input.userid,
+				password : input.password,
+		};
+		connection.connect();
+		console.log("das"+data);
+		var result = 'false';
+		var query = connection.query("SELECT * from user WHERE email = ? ", [data.email], function(err, rows){
+			if(err)
+				console.log("Error fecthing details : %s", err);
+			if(rows[0]==undefined){
+				result = 'false';
+			}
+			if(rows[0].password==data.password){
+//				sess = req.session;
+//				console.log(req.session);
+//				console.log(rows[0].firstName);
+//				sess.fname = rows[0].firstName;
+//				sess.lname = rows[0].lastName;
+//				sess.email = rows[0].email;
+				console.log(rows);
+				result = 'true';
+				
+			}
+			else {
+				res.redirect('/');
+			}
+			console.log(result);
+			res.json({"email": data.email, "result": result});
+			//res.end(result);
+		});
+	}
+	
 }
 exports.reviews = function(req, res){
 	var name = req.params.name;
@@ -382,6 +405,20 @@ exports.imageForm = function(req, res) {
     });
 };
  
+
+exports.options = function(req, res){
+	  console.log('!OPTIONS');
+      var headers = {};
+      // IE8 does not allow domains to be specified, just the *
+      // headers["Access-Control-Allow-Origin"] = req.headers.origin;
+      headers["Access-Control-Allow-Origin"] = "*";
+      headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+      headers["Access-Control-Allow-Credentials"] = false;
+      headers["Access-Control-Max-Age"] = '86400'; // 24 hours
+      headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept";
+      res.writeHead(200, headers);
+      res.end();
+}
 exports.uploadImage = function(req, res, next){
        // console.log('file info: ',req.files.image);
  
@@ -404,6 +441,42 @@ exports.uploadImage = function(req, res, next){
         
         res.send(util.format('<img src="/Users/prashantyadav/Documents/images/uploads/AF.png">'
         ));
- 
- 
 };
+
+exports.verify = function(req,res){
+	var text = req.params.email;
+	var param = text.split(",");
+	var email = param[0];
+	var hash = param[1];
+	
+	var connection = mysqldb.getConnection();
+	connection.connect();
+	console.log(email + " : "+ hash);
+	var result = null;
+	var query = connection.query("select u.user_id from user u join Access a on u.id = a.user_id " +
+			"join AccessPoints ap on ap.id = a.access_id " +
+			"WHERE u.email = ? and ap.access_point_id = ? " +
+			"and a.isAllowed = 1 and a.valid_upto > now()", [email, hash], function(err, rows){
+		if(err)
+			console.log("Error fecthing details : %s", err);
+		if(rows[0]==undefined){
+			result = 'false';
+		}
+		else{
+			console.log(rows);
+			result = 'true';
+			
+		}
+		console.log(result);
+		res.send(result);
+		//res.end(result);
+	});
+
+	
+}
+exports.home = function(req, res){
+	res.render('admin-home');
+}
+exports.test = function(req, res){
+	res.render('index-1');
+}
