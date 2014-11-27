@@ -103,50 +103,40 @@ function htmlEntities(str) {
 
 function read(a)
 {
-//	for(var p in navigator)
-//	    x += p + '=' + navigator[p] + "\n";
-//	//alert(x);
-//	var hash = CryptoJS.SHA1(x);
+	for(var p in navigator)
+	    x += p + '=' + navigator[p] + "\n";
+	//alert(x);
+	var hash = CryptoJS.SHA1(x);
 	
     var html="";
     if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
         html+="<a target='_blank' href='"+a+"'>"+a+"</a>";
     html+=""+htmlEntities(a)+"";
-    
-    
-    if(html=="akshay.talathi@sjsu.edu" || html=="akshay.joshi@sjsu.edu"|| html=="prashant.yadav@sjsu.edu" || html=="prashant.luthra@sjsu.edu" )
-    	document.getElementById("result").innerHTML='<img src="/images/'+'AccessGranted.png">';
+    var xmlhttp;
+    var x = '';
+    for(var p in navigator)
+        x += p + '=' + navigator[p] + "\n";
+    var hash = CryptoJS.SHA1(x);
+    if (window.XMLHttpRequest)
+      {// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp=new XMLHttpRequest();
+      }
     else
-    	document.getElementById("result").innerHTML='<img src="/images/'+'AccessDenied.png">';
-    //ajax call
-//    var xmlhttp;
-//    var x = '';
-//    for(var p in navigator)
-//        x += p + '=' + navigator[p] + "\n";
-//    var hash = CryptoJS.SHA1(x);
-//    if (window.XMLHttpRequest)
-//      {// code for IE7+, Firefox, Chrome, Opera, Safari
-//      xmlhttp=new XMLHttpRequest();
-//      }
-//    else
-//      {// code for IE6, IE5
-//      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-//      }
-//    xmlhttp.onreadystatechange=function()
-//      {
-//      if (xmlhttp.readyState==4 && xmlhttp.status==200)
-//        {
-//    	  alert(xmlhttp.responseText);
-//    	  document.getElementById("result").innerHTML='<img src="/images/'+'size.png">';
-//        }
-//      }
-//    
-//    
-//    
-//    //alert(html);
-//    xmlhttp.open("GET","verify/"+html+","+hash,true);
-//    xmlhttp.send(); 
-    //alert(html);
+      {// code for IE6, IE5
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+    xmlhttp.onreadystatechange=function()
+      {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+    	  alert(xmlhttp.responseText);
+    	  document.getElementById("result").innerHTML='<img src="/images/'+'size.png">';
+        }
+      }
+    alert(html);
+    xmlhttp.open("GET","verify/"+html+","+hash,true);
+    xmlhttp.send(); 
+    alert(html);
     //document.getElementById("result").innerHTML=html;
 }	
 

@@ -1,0 +1,87 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files (x86)\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'cookies-parser' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose node symlink C:\Program Files (x86)\nodejs\\node.exe
+5 verbose cache add [ 'cookies-parser', null ]
+6 verbose cache add name=undefined spec="cookies-parser" args=["cookies-parser",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'cookies-parser',
+7 verbose parsed url   path: 'cookies-parser',
+7 verbose parsed url   href: 'cookies-parser' }
+8 silly lockFile 514cc7d0-cookies-parser cookies-parser
+9 verbose lock cookies-parser C:\Users\Akshay\AppData\Roaming\npm-cache\514cc7d0-cookies-parser.lock
+10 silly lockFile 514cc7d0-cookies-parser cookies-parser
+11 silly lockFile 514cc7d0-cookies-parser cookies-parser
+12 verbose addNamed [ 'cookies-parser', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile 0c8b77ca-cookies-parser cookies-parser@
+15 verbose lock cookies-parser@ C:\Users\Akshay\AppData\Roaming\npm-cache\0c8b77ca-cookies-parser.lock
+16 silly addNameRange { name: 'cookies-parser', range: '*', hasData: false }
+17 verbose request where is /cookies-parser
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id cc73f8865810629d
+20 verbose url raw /cookies-parser
+21 verbose url resolving [ 'https://registry.npmjs.org/', './cookies-parser' ]
+22 verbose url resolved https://registry.npmjs.org/cookies-parser
+23 verbose request where is https://registry.npmjs.org/cookies-parser
+24 info trying registry request attempt 1 at 01:56:54
+25 http GET https://registry.npmjs.org/cookies-parser
+26 http 404 https://registry.npmjs.org/cookies-parser
+27 verbose headers { date: 'Mon, 24 Nov 2014 09:56:52 GMT',
+27 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 verbose headers   'content-type': 'application/json',
+27 verbose headers   'cache-control': 'max-age=0',
+27 verbose headers   'content-length': '52',
+27 verbose headers   'accept-ranges': 'bytes',
+27 verbose headers   via: '1.1 varnish',
+27 verbose headers   age: '0',
+27 verbose headers   'x-served-by': 'cache-lax1428-LAX',
+27 verbose headers   'x-cache': 'MISS',
+27 verbose headers   'x-cache-hits': '0',
+27 verbose headers   'x-timer': 'S1416823012.481424,VS0,VE74',
+27 verbose headers   'keep-alive': 'timeout=10, max=50',
+27 verbose headers   connection: 'Keep-Alive' }
+28 silly registry.get cb [ 404,
+28 silly registry.get   { date: 'Mon, 24 Nov 2014 09:56:52 GMT',
+28 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+28 silly registry.get     'content-type': 'application/json',
+28 silly registry.get     'cache-control': 'max-age=0',
+28 silly registry.get     'content-length': '52',
+28 silly registry.get     'accept-ranges': 'bytes',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     age: '0',
+28 silly registry.get     'x-served-by': 'cache-lax1428-LAX',
+28 silly registry.get     'x-cache': 'MISS',
+28 silly registry.get     'x-cache-hits': '0',
+28 silly registry.get     'x-timer': 'S1416823012.481424,VS0,VE74',
+28 silly registry.get     'keep-alive': 'timeout=10, max=50',
+28 silly registry.get     connection: 'Keep-Alive' } ]
+29 silly lockFile 0c8b77ca-cookies-parser cookies-parser@
+30 silly lockFile 0c8b77ca-cookies-parser cookies-parser@
+31 error 404 404 Not Found: cookies-parser
+31 error 404
+31 error 404 'cookies-parser' is not in the npm registry.
+31 error 404 You should bug the author to publish it
+31 error 404
+31 error 404 Note that you can also install from a
+31 error 404 tarball, folder, or http url, or git url.
+32 error System Windows_NT 6.2.9200
+33 error command "C:\\Program Files (x86)\\nodejs\\\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "cookies-parser"
+34 error cwd C:\Users\Akshay\Downloads\Virtual-Badge-master\Virtual-Badge-master
+35 error node -v v0.10.33
+36 error npm -v 1.4.28
+37 error code E404
+38 verbose exit [ 1, true ]

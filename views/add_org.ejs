@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Tables</title>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap-theme.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> 
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    
+    <body>
+	<div class="navbar navbar-fixed-top">
+    	<div class="navbar-inner">
+	        <div class="container-fluid">
+  	        	<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+ 	            	<span class="icon-bar"></span>
+                 	<span class="icon-bar"></span>
+              	</a>
+              	<a class="brand" href="#">Admin Panel</a>
+              	<div class="nav-collapse collapse">
+             		<ul class="nav pull-right">
+               			<li class="dropdown">
+                    		<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Vincent Gabriel <i class="caret"></i></a>
+                      		<ul class="dropdown-menu">
+                           		<li>
+                               		<a tabindex="-1" href="#">Profile</a>
+                            	</li>
+                            	<li class="divider"></li>
+                            	<li>
+            	                	<a tabindex="-1" href="login.html">Logout</a>
+            	            	</li>
+        	         		</ul>
+ 	                	</li>
+             		</ul>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div>
+<form class="form-horizontal" action="/organizations" method="POST">
+  <fieldset>
+    <div id="legend" style="margin-left: 20px;">
+      <legend class="">Add Organization</legend>
+    </div>
+    <div class="control-group">
+      <!-- FirstName -->
+      <label class="control-label"  for="name">Organization Name</label>
+      <div class="controls">
+        <input type="text" id="name" name="name" placeholder="Organization Name" class="input-xlarge" required>
+      </div>
+    </div>
+    <div class="control-group">
+      <!-- FirstName -->
+      <label class="control-label"  for="description">Description</label>
+      <div class="controls">
+        <textarea class="form-control" id="description" name="description" required cols="30" rows="5" placeholder="Description" class="input-xlarge" style="width: 500px;"></textarea>
+      </div>
+    </div>
+
+
+ 
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button class="btn btn-success" value="save" name="Submit" >Save</button>
+      	<button type="button" class="btn btn-danger" name="cancel" onClick = "location.href = '/organizations';">Cancel</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+</div>
+<div class="navbar navbar-fixed-top">
+    	<div class="navbar-inner">
+	        <div class="container-fluid">
+  	        	<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+ 	            	<span class="icon-bar"></span>
+                 	<span class="icon-bar"></span>
+              	</a>
+              	<a class="brand" href="#">Admin Panel</a>
+              	<div class="nav-collapse collapse">
+             		<ul class="nav pull-right">
+               			<li class="dropdown">
+                    		<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Vincent Gabriel <i class="caret"></i></a>
+                      		<ul class="dropdown-menu">
+                           		<li>
+                               		<a tabindex="-1" href="#">Profile</a>
+                            	</li>
+                            	<li class="divider"></li>
+                            	<li>
+            	                	<a tabindex="-1" href="login.html">Logout</a>
+            	            	</li>
+        	         		</ul>
+ 	                	</li>
+             		</ul>
+     	        	<ul class="nav">
+ 	                	<li class="">
+  	                		<a href="#">Manage Organization</a>
+                    	</li>
+                    	<li class="">
+  							<a href="#">Manage Access Points</a>
+                    	</li>
+                    	<li class="">
+                        	<a href="#">Assign Access</a>
+                    	</li>
+             		</ul>
+       			</div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div>
+
+        <!--start of div for tables -->
+        
+              
+        
+        
+        <!--end of div-->
+    
+    
+    
+    <script src="/js/jquery-1.9.1.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/jquery.dataTables.min.js"></script>
+
+
+        <script src="/js/scripts.js"></script>
+        <script src="/js/DT_bootstrap.js"></script>
+        <script>
+        $(function() {
+            
+        });
+        </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

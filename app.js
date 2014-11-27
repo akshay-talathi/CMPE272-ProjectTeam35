@@ -10,6 +10,9 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 //load customers route
 var customers = require('./routes/customers'); 
+var users = require('./routes/users'); 
+var organizations = require('./routes/organizations'); 
+var accesspoints = require('./routes/accesspoints'); 
 var app = express();
 var connection  = require('express-myconnection'); 
 //var mysql = require('mysql');
@@ -39,12 +42,45 @@ app.use(function(req, res, next) {
 	  next();
 	});
 app.post('/badge/login', customers.logindo);
-app.get('/', customers.test);
+app.get('/', customers.login);
 app.get('/scan', customers.scan);
-app.get('/test', customers.login);
+app.get('/test', customers.test);
 app.get('/home', customers.home);
 app.options('/badge/login', customers.options);
 app.get('/verify/:email', customers.verify);
+
+
+//--------------Our Use Cases----
+
+//Organizations Routes
+
+app.get('/organizations', organizations.orgList);
+app.get('/organizations/add', organizations.addOrganization);
+app.post('/organizations', organizations.saveOrg);
+app.get('/organizations/delete/:id', organizations.deleteOrganization);
+app.get('/organizations/edit/:id', organizations.editOrg);
+app.post('/organizations/:id', organizations.saveDetails);
+
+//Users Routes
+
+app.get('/users/register', users.addUser);
+app.post('/users/register', users.saveUser);//route delete customer
+app.get('/organizations/:id/users', users.usersList);
+app.get('/organizations/:org_id/users/delete/:user_id', users.delete_user);//edit customer route , get n post
+app.get('/organizations/:org_id/users/edit/:user_id', users.editUser);
+app.post('/organizations/:org_id/users/edit/:user_id',users.save_edit_user);
+
+//Accesspoints Routes
+
+app.get('/organizations/:org_id/accesspoints', accesspoints.getAccessPoints);
+app.get('/organizations/:org_id/accesspoints/add', accesspoints.addAccessPoints);
+app.post('/organizations/:org_id/accesspoints/', accesspoints.saveAccessPoints);
+app.get('/organizations/:org_id/accesspoints/delete/:id', accesspoints.deleteAccessPoints);
+app.get('/organizations/:org_id/accesspoints/edit/:id', accesspoints.editAccessPoints);
+app.post('/organizations/:org_id/accesspoints/:id', accesspoints.saveDetailsAccessPoints);
+
+
+//-----------------------------------------------------------------
 
 app.use(app.router);
 http.createServer(app).listen(app.get('port'), function(){
