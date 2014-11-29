@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Tables</title>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap-theme.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> 
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        
+  
+   <!-- Bootstrap Core CSS -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="stylesheets/plugins/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="stylesheets/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+  <!--dropdown and datepicker-->
+      <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  	  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  	  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    
+    <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
+  });
+  </script>
+  
+    </head>
+    
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">Admin Panel</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Prashant <i class="caret"></i>
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#">Profile</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1" href="login.html">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li class="">
+                                <a href="#">Manage Organization</a>
+                            </li>
+                            <li class="">
+                                <a href="#">Manage Access Points</a>
+                            </li>
+                            <li class="">
+                                <a href="#">Assign Access</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <!--/span-->
+                <div class="span9" id="content">
+                     <div class="row-fluid">
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">Bootstrap dataTables with Toolbar</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">                                
+                                	<h3>Update User Access</h3>
+								</div>
+								<br/>
+								<br/>
+								<br/>
+								<br/>
+								<br/>
+								
+							<form method="POST" id="signup-form" class="yform signup-form  city-hidden" action="/postUpdate/<%=data.u_id%>">
+							
+							<input type = "hidden" value="<%=data.access_id%>" name = "access_id">
+							<div class="form-group">
+                                <label for="disabledSelect">User Email Id:</label>
+                                <select id="disabledSelect" class="form-control">
+                                    <option value="<%=data.u_id%>"><%=email_temp%></option>
+                                </select>
+                            </div>
+                            <br/>
+                            <%if(allowed_temp){%>
+                            <div class="form-group">
+                                <label for="disabledSelect">Access allowed?</label>
+                                <select id="isallowed" class="form-control" name = "isallowed">
+                                    <option value = "1" selected>Yes</option>
+                                 	<option value = "0">No</option>
+                                </select>
+                            </div>
+                            <%}else{%>
+                            
+                            <div class="form-group">
+                                <label>Access allowed?</label>
+                                <select id="isallowed" class="form-control" name = "isallowed">
+                                    <option value = "1">Yes</option>
+                                 	<option value = "0" selected>No</option>
+                                </select>
+                            </div>
+                            <%}%>
+                            <br/>
+                                 <%
+						         	var validity = valid_temp.toString();
+						        	validity = validity.substring(0, validity.length-42);         
+						         %>
+						         
+						         <label class="placeholder-sub">Valid Upto:</label>
+                                 <input type="text" value="<%=validity%>" required="required" placeholder="Click here for access validity" name="validity" id="datepicker">
+                                 
+                                 
+                            </div>
+                            <button type="submit" class="btn btn-default">Update</button>
+                            </form>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <footer>
+                <p>&copy; Prashant 2013</p>
+            </footer>
+        </div>
+        <!--/.fluid-container-->
+
+        <script src="/js/jquery-1.9.1.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/jquery.dataTables.min.js"></script>
+
+
+        <script src="/js/scripts.js"></script>
+        <script src="/js/DT_bootstrap.js"></script>
+        
+        
+        
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/sb-admin-2.js"></script>
+        <script>
+        $(function() {
+            
+        });
+        </script>
+    </body>
+
+</html>

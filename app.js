@@ -80,6 +80,15 @@ app.get('/organizations/:org_id/accesspoints/edit/:id', accesspoints.editAccessP
 app.post('/organizations/:org_id/accesspoints/:id', accesspoints.saveDetailsAccessPoints);
 
 
+//prashant luthra Routes
+
+app.get('/listAccessPoints', customers.listAccessPoints);
+app.get('/showUserAccess/:id', customers.showUserAccess);
+app.get('/assignAccess/:id', customers.assignAccess);
+app.post('/postAccess/:id', customers.postAccess);
+app.get('/updateUserAccess/:id', customers.updateUserAccess);
+app.post('/postUpdate/:id', customers.postUpdate);
+
 //-----------------------------------------------------------------
 
 app.use(app.router);

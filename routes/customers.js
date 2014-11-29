@@ -232,16 +232,146 @@ exports.logindo = function(req, res) {
     }
 
 }
-exports.reviews = function(req, res) {
-    var name = req.params.name;
-    res.render('review_submit', {
-        page_title: "Categories",
-        element_name: name,
-        name: sess.fname,
-        lastlogin: sess.lastlogin,
-        email: sess.email
-    });
+
+///////prashant luthra/////////
+
+exports.listAccessPoints = function(req, res){
+	var connection = mysqldb.getConnection();
+	connection.connect();
+	connection.query('SELECT * from accesspoints', function(err, rows){
+		if(err)
+			console.log("Error getting values % s", err);
+		res.render('listAccessPoints', {page_title:"AccessPoints", data:rows});
+	});
+	connection.end();
+	//}
 }
+
+exports.showUserAccess = function(req,res){
+	var id = req.params.id;
+	var connection = mysqldb.getConnection();
+	connection.connect();
+	connection.query("SELECT ap.id as ap_id,ap.name as ap_name, u.firstname as firstname,u.lastname as lastname, a.user_id as user_id, a.isAllowed as isAllowed, a.valid_upto as valid_upto from accesspoints ap join access a join user u WHERE a.access_id = ap.id AND a.user_id= u.id AND a.access_id = ?", [id], function(err, rows){
+		if(err)
+			console.log("Error fetching results : %s", err);
+		console.log(rows);
+/*		var validity = rows[0].valid_upto.toString();
+		validity = validity.substring(0, validity.length-42);
+		console.log(validity);*/
+		res.render('showUserAccess',{page_title:"Access to Users", data: rows,ap_name:rows[0].ap_name,ap_id:rows[0].ap_id});
+	});
+	connection.end();
+}
+
+exports.assignAccess = function(req,res){
+	var id = req.params.id;
+	console.log("id: " +id);
+	var connection = mysqldb.getConnection();
+	connection.connect();
+	connection.query("SELECT * from user", function(err, rows){
+		if(err)
+			console.log("Error getting values % s", err);
+		//console.log("Users: "+ rows[0].email);
+		res.render('assignAccess', {page_title:"Assign Access", data:rows, ap_id: id});
+		
+	});
+	connection.end();
+}
+
+exports.postAccess = function(req, res){
+		//var user_id = req.params.user_id;
+		var ap_id = req.params.id;
+		console.log("ap_id: "+ ap_id);
+		
+		var input = JSON.parse(JSON.stringify(req.body));
+		console.log(input);
+		var connection = mysqldb.getConnection();
+		connection.connect();
+		
+		//console.log(valid_string);
+		var data1 = {
+					access_id: ap_id,
+					user_id : input.user,
+					isAllowed: 1,
+					valid_upto : input.validity,
+				};
+				console.log(data1);
+				connection.query("Insert into access set ?", data1, function(err,rows1){
+					if(err)
+						console.log("Error inserting : %s", err);
+					else
+						{
+						connection.query("SELECT ap.id as ap_id,ap.name as ap_name, u.firstname as firstname,u.lastname as lastname, a.user_id as user_id, a.isAllowed as isAllowed, a.valid_upto as valid_upto from accesspoints ap join access a join user u WHERE a.access_id = ap.id AND a.user_id= u.id AND a.access_id = ?", [ap_id], function(err, rows){
+							if(err)
+								console.log("Error fetching results : %s", err);
+							console.log(rows);
+							res.render('showUserAccess',{page_title:"Access to Users", data: rows,ap_name:rows[0].ap_name,ap_id:rows[0].ap_id});
+						});
+						connection.end();
+						}
+				});
+			
+		
+}
+
+exports.updateUserAccess = function(req,res){
+	var us_id = req.params.id;
+	console.log(us_id);
+	var connection = mysqldb.getConnection();
+	connection.connect();
+	var queryString = 'SELECT u.id as u_id,u.email as email, a.access_id as access_id, a.isAllowed as isAllowed, a.valid_upto as valid_upto FROM user u JOIN access a WHERE u.id = a.user_id AND a.user_id = ?';
+	connection.query(queryString, [us_id], function(err, rows){;
+		if(err)
+			console.log("Error getting values % s", err);
+		console.log("Rows(email): "+rows[0].email);
+		console.log("Rows(): "+rows[0].valid_upto);
+		res.render('updateUserAccess', {page_title:"Update user access", data:rows[0], valid_temp:rows[0].valid_upto, email_temp: rows[0].email, allowed_temp: rows[0].isAllowed});
+		//console.log(data);
+		
+	});
+	
+	connection.end();
+}
+
+exports.postUpdate = function(req,res){
+	var id = req.params.id;
+	console.log(id);
+	
+	var input = JSON.parse(JSON.stringify(req.body));
+	console.log(input);
+	console.log(typeof(input.validity));
+	//var validity = new Date(input.validity);
+	//console.log(typeof(validity));
+	var connection = mysqldb.getConnection();
+	connection.connect();
+	
+	var data = {
+			isAllowed : input.isallowed,
+			valid_upto : input.validity,
+	};
+
+	var	query = connection.query("UPDATE access set ? where user_id =? AND access_id = ?",[data, id,input.access_id],function(err,rows){
+		if(err)
+			console.log("Error Inserting: %s",err);
+		else
+			{
+			connection.query("SELECT ap.id as ap_id,ap.name as ap_name, u.firstname as firstname,u.lastname as lastname, a.user_id as user_id, a.isAllowed as isAllowed, a.valid_upto as valid_upto from accesspoints ap join access a join user u WHERE a.access_id = ap.id AND a.user_id= u.id AND a.access_id = ?", [input.access_id], function(err, rows){
+				if(err)
+					console.log("Error fetching results : %s", err);
+				console.log(rows);
+				res.render('showUserAccess',{page_title:"Access to Users", data: rows,ap_name:rows[0].ap_name,ap_id:rows[0].ap_id});
+			});
+			connection.end();
+			}
+		//connection.end();
+	});
+}
+
+
+////////// PL - end////////////
+
+
+
 exports.get_reviews = function(req, res) {
     var name = req.params.name;
     // if(req.session.fname == undefined){
@@ -267,47 +397,7 @@ exports.get_reviews = function(req, res) {
     // }
 
 }
-exports.write_reviews = function(req, res) {
-    var input = JSON.parse(JSON.stringify(req.body));
-    // if(req.session.fname == undefined){
-    // res.redirect("/");
-    // }
-    // else {
-    var connection = mysqldb.getConnection();
 
-    var data = {
-        element_name: input.element_name,
-        rating: input.rating,
-        review: input.review,
-        submitted_by: sess.email,
-        submitted_on: new Date(),
-    };
-
-    var query = connection.query("Insert into reviews set ? ", data, function(err, rows) {
-        if (err)
-            console.log("Error inserting : %s ", err);
-        else {
-
-            connection.query("Select * from reviews where element_name = ?", [input.element_name], function(err, rows) {
-                if (err)
-                    console.log("Error fetching results : %s", err);
-                console.log(rows + "************");
-                res.render('get_reviews', {
-                    page_title: "Categories",
-                    data: rows,
-                    element_name: data.element,
-                    name: sess.fname,
-                    lastlogin: sess.lastlogin,
-                    email: sess.email
-                });
-            });
-            connection.end();
-        }
-    });
-
-    // }
-
-};
 exports.save_edit = function(req, res) {
     var input = JSON.parse(JSON.stringify(req.body));
     var id = req.params.id;
@@ -352,34 +442,7 @@ exports.delete_customer = function(req, res) {
     });
 };
 
-exports.getDetails = function(req, res) {
-    var name = req.params.name;
-    // if(req.session.fname == undefined){
-    // res.redirect("/");
-    // }
-    // else {
-    var connection = mysqldb.getConnection();
 
-    connection.query("Select * from element where category_name = ?", [name],
-        function(err, rows) {
-            if (err)
-                console.log("Error fetching results : %s", err);
-            console.log(rows + "************");
-
-            res.render('details', {
-                page_title: "Details",
-                isAdmin: sess.isAdmin,
-                data: rows,
-                category_name: name,
-                data: rows,
-                name: sess.fname,
-                lastlogin: sess.lastlogin
-            });
-        });
-
-    connection.end();
-    // }
-}
 
 exports.logout = function(req, res) {
     var email = sess.email;
