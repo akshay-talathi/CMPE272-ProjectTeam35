@@ -35,21 +35,13 @@
                     <a class="brand" href="#">Admin Panel</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right">
-                            <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Prashant <i class="caret"></i>
-
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a tabindex="-1" href="#">Profile</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a tabindex="-1" href="login.html">Logout</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+	               			<li>
+	                    		<a href="#" role="button" class="" > <i class="icon-user"></i> <%=sess.firstname%>&nbsp;<%=sess.lastname%></a>
+	 	                	</li>
+	 	                	<li>
+	 	                		<a href="#" role="button" class=""> Logout</a>
+	 	                	</li>
+	             		</ul>
                         <ul class="nav">
                             <li class="">
                                 <a href="/organizations">Manage Organization</a>
@@ -67,9 +59,7 @@
                      <div class="row-fluid">
                         <!-- block -->
                         <div class="block">
-                            <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Bootstrap dataTables with Toolbar</div>
-                            </div>
+                            <br/><br/>
                             <div class="block-content collapse in">
                                 <div class="span12">                                
                                 	<h3>Update User Access</h3>
@@ -77,8 +67,7 @@
 								<br/>
 								<br/>
 								<br/>
-								<br/>
-								<br/>
+								
 								
 							<form method="POST" id="signup-form" class="yform signup-form  city-hidden" action="/postUpdate/<%=data.u_id%>">
 							

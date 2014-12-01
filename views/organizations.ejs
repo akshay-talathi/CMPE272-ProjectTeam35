@@ -101,7 +101,7 @@
                             <th width="121px">Action</th>
                             <th width="165px">Access Points</th>
                             <th width="160px">Assign Access</th>
-
+							<th width="160px">Users</th>
                         </tr>
                     </thead>
                         <%
@@ -111,7 +111,7 @@
                         <tr>
                           <td width="50px"> <%=i+1 %></td>
 
-                            <td><a href="../organizations/<%=data[i].id%>/users"><%=data[i].name %></a></td>
+                            <td><%=data[i].name %></a></td>
 
                             <td><%=data[i].description %></td>
                             
@@ -126,7 +126,12 @@
                              
                              </td>
                              
-                             <td><button type="button" class="btn btn-info" onClick="location.href = '/listAccessPoints/<%=data[i].id%>';">Assign Access</button></td>
+                             <td><button type="button" class="btn btn-primary" onClick="location.href = '/listAccessPoints/<%=data[i].name%>/<%=data[i].id%>';">Assign Access</button></td>
+                             
+                             
+                             
+                             <td><button type="button" class="btn btn-primary" onClick="location.href = '/organizations/<%=data[i].id%>/users';">Users</button></td>
+                             
                              
                         </tr> <%}%>                                    
                                             

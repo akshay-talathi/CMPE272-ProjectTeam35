@@ -32,6 +32,14 @@ exports.logindo = function(req, res) {
 					else
 					{
 						if(rows[0].isAdmin == 1){
+							sess = req.session;
+	                         console.log(req.session);
+	                         sess.uid = rows[0].id;
+	                         sess.firstname = rows[0].firstname;
+	                         sess.lastname = rows[0].lastname;
+	                         sess.email = rows[0].email;
+	                         sess.isActive = rows[0].isActive;
+	                         sess.isAdmin = rows[0].isAdmin;
 							connection.end();
 							res.render('home', {
 								page_title : "Homepage - Node.js",
