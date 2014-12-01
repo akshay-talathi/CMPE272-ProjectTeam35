@@ -4,9 +4,9 @@ function getConnection(){
 	var connection = mysql.createConnection({        
 	    host: 'localhost',
 	    user: 'root',
-	    password : '1234',
+	    password : '',
 	    port : 3306, //port mysql
-	    database:'Badge'
+	    database:'NewBadge'
 	});
 	return connection;
 }

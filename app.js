@@ -61,7 +61,7 @@ app.post('/organizations', organizations.saveOrg);
 app.get('/organizations/delete/:id', organizations.deleteOrganization);
 app.get('/organizations/edit/:id', organizations.editOrg);
 app.post('/organizations/:id', organizations.saveDetails);
-
+app.get('/t', customers.t);
 //Users Routes
 
 app.get('/users/register', users.addUser);

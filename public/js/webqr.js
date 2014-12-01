@@ -129,14 +129,19 @@ function read(a)
       {
       if (xmlhttp.readyState==4 && xmlhttp.status==200)
         {
-    	  alert(xmlhttp.responseText);
-    	  document.getElementById("result").innerHTML='<img src="/images/'+'size.png">';
+    	  //alert(xmlhttp.responseText);
+    	  var image = null;
+    	  if(xmlhttp.responseText=='true')
+    		  image = 'AccessGranted.png';
+    	  else
+    		  image = 'AccessDenied.png';
+    	  document.getElementById("result").innerHTML='<img src="/images/'+image+'">';
         }
       }
-    alert(html);
+    //alert(html);
     xmlhttp.open("GET","verify/"+html+","+hash,true);
     xmlhttp.send(); 
-    alert(html);
+    //alert(html);
     //document.getElementById("result").innerHTML=html;
 }	
 

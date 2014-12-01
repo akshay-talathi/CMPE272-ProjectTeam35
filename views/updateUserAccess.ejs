@@ -3,10 +3,18 @@
     
     <head>
         <title>Tables</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+		  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+		  <link rel="stylesheet" href="/resources/demos/style.css">
+		  <script>
+		  $(function() {
+		    $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
+		  });
+		  </script>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap-theme.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> 
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -14,31 +22,6 @@
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <script src="/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-        
-  
-   <!-- Bootstrap Core CSS -->
-    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="stylesheets/plugins/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="stylesheets/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
-  
-  <!--dropdown and datepicker-->
-      <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-  	  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-  	  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    
-    <script>
-  $(function() {
-    $( "#datepicker" ).datepicker({dateFormat:'yy-mm-dd'});
-  });
-  </script>
-  
     </head>
     
     <body>
@@ -157,19 +140,6 @@
 
         <script src="/js/scripts.js"></script>
         <script src="/js/DT_bootstrap.js"></script>
-        
-        
-        
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/sb-admin-2.js"></script>
-        <script>
-        $(function() {
-            
-        });
-        </script>
     </body>
 
 </html>

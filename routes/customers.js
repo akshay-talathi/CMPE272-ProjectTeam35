@@ -1124,3 +1124,7 @@ exports.deleteAccessPoints = function(req, res) {
             });
     connection.end();
 }
+
+exports.t = function(req, res){
+res.render('test');
+}
