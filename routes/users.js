@@ -22,15 +22,18 @@ exports.usersList = function(req, res) {
 
                 res.render('users', {
                     page_title : "users - Node.js",
-                    data : rows
+                    data : rows,
+                    org_id : org_id
                 });
 
             });
     connection.end();
 };
 exports.addUser = function(req, res) {
+	var org_id = req.params.org_id;
     res.render('add_user', {
-        page_title : "Add Users-Node.js"
+        page_title : "Add Users-Node.js",
+        org_id : org_id
     });
 };
 exports.editUser = function(req, res) {
@@ -56,7 +59,7 @@ exports.editUser = function(req, res) {
 /* Save the customer */
 exports.saveUser = function(req, res) {
     console.log("Here");
-    
+    var org_id = req.params.org_id;
     var input = JSON.parse(JSON.stringify(req.body));
     console.log(input);
     var connection = mysqldb.getConnection();
@@ -68,8 +71,7 @@ exports.saveUser = function(req, res) {
         email : input.email,
         contact : input.contact,
         isActive : 1,
-        qr : null,
-        org_id : req.body.org_id
+        qr : null
     };
     console.log("Here");
     var query = connection.query("SELECT * from user WHERE email = ? ",[ data.email ],
@@ -78,18 +80,18 @@ exports.saveUser = function(req, res) {
                         if (err){
                                     console.log("Error fecthing details : %s", err);
                                     connection.end();
-                                    res.redirect('/organizations/' + input.org_id+ '/users');
+                                    res.redirect('/organizations/' + org_id+ '/users');
                         }
                         console.log("Found user:" + rows.length);
                         if (!rows.length) {
                             console.log("Here Insert query" + input.firstname + input.lastname);
-                            connection.query("INSERT INTO user set firstname = '" + input.firstname + "',lastname = '" + input.lastname + "',email = '" + input.email + "',password = SHA1('" + input.password + "'),contact = '" + input.contact + "',isActive = 1, org_id = '" + input.org_id + "';" ,
+                            connection.query("INSERT INTO user set firstname = '" + input.firstname + "',lastname = '" + input.lastname + "',email = '" + input.email + "',password = SHA1('" + input.password + "'),contact = '" + input.contact + "',isActive = 1, org_id = "+org_id ,
                                             function(err, rows) {
                                                 if (err)
                                                     console.log("Error Inserting: %s",err);
                                                 //req.flash('error','You are registerd.Please Login!');
                                                 connection.end();
-                                                res.redirect('/organizations/'+ input.org_id+ '/users');
+                                                res.redirect('/organizations/'+ org_id+ '/users');
 
                                             });
 
@@ -97,7 +99,7 @@ exports.saveUser = function(req, res) {
                             if (rows[0].email == input.email) {
                                 //req.flash('error','Email ID already exists. Please try another email.');
                                 connection.end();
-                                res.redirect('/organizations/' + input.org_id+ '/users');
+                                res.redirect('/organizations/' + org_id+ '/users');
                                 
                             }
                         }
