@@ -25,32 +25,35 @@
  	            	<span class="icon-bar"></span>
                  	<span class="icon-bar"></span>
               	</a>
-              	<a class="brand" href="#">Admin Panel</a>
-              	<div class="nav-collapse collapse">
-             		<ul class="nav pull-right">
-               			<li class="dropdown">
-                    		<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Vincent Gabriel <i class="caret"></i></a>
-                      		<ul class="dropdown-menu">
-                           		<li>
-                               		<a tabindex="-1" href="#">Profile</a>
-                            	</li>
-                            	<li class="divider"></li>
-                            	<li>
-            	                	<a tabindex="-1" href="login.html">Logout</a>
-            	            	</li>
-        	         		</ul>
- 	                	</li>
-             		</ul>
+              	<a class="brand" href="/organizations">Admin Panel</a>
+              	
+              	
+             		
+             		   <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Admin <i class="caret"></i>
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#">Profile</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1" href="#">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+             		</div>
+             		
+             		
      	        	<ul class="nav">
  	                	<li class="">
-  	                		<a href="#">Manage Organization</a>
+  	                		<a href="/organizations">Manage Organization</a>
                     	</li>
-                    	<li class="">
-  							<a href="#">Manage Access Points</a>
-                    	</li>
-                    	<li class="">
-                        	<a href="#">Assign Access</a>
-                    	</li>
+                    	
              		</ul>
        			</div>
                     <!--/.nav-collapse -->
@@ -97,6 +100,8 @@
 
                             <th width="121px">Action</th>
                             <th width="165px">Access Points</th>
+                            <th width="160px">Assign Access</th>
+
                         </tr>
                     </thead>
                         <%
@@ -113,13 +118,16 @@
                             <div class="btn-group">
                             <td>
                                 <button type="button" class="btn btn-warning" onClick="location.href = '/organizations/edit/<%=data[i].id%>';">Edit</button>
-                                <button type="button" class="btn btn-danger" onClick="location.href = '/organizations//delete/<%=data[i].id%>';">Delete</button>
+                                <button type="button" class="btn btn-danger" onClick="location.href = '/organizations/delete/<%=data[i].id%>';">Delete</button>
 
                             </td>
                             <td>
                              <button type="button" class="btn btn-primary" onClick="location.href = '/organizations/<%=data[i].id%>/accesspoints';" href="http://google.com">Manage Access Point</button>
                              
                              </td>
+                             
+                             <td><button type="button" class="btn btn-info" onClick="location.href = '/listAccessPoints/<%=data[i].id%>';">Assign Access</button></td>
+                             
                         </tr> <%}%>                                    
                                             
                                             

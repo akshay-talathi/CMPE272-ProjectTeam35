@@ -54,13 +54,7 @@
                             <li class="">
                                 <a href = "/organizations">manage organization</a>
                             </li>
-                            <li class="">
-                                <a href = "#">manage user</a>
-                            </li>
-                            <li class="">
-                                <a href = "#">manage access point</a>
-                            </li>
-                            
+                          
                     </ul>
                 </div>
            </div>
@@ -101,6 +95,8 @@
 
                             <th width="121px">Action</th>
                             <th width="165px">Access Points</th>
+                            <th width="50px">Assign Access</th>
+                            
                         </tr>
                     </thead>
                         <%
@@ -129,6 +125,9 @@
                              <button type="button" class="btn btn-primary" onClick="location.href = '/organizations/<%=data[i].id%>/accesspoints';" href="http://google.com">Manage Access Point</button>
                              
                              </td>
+                             
+                      <td><button type="button" class="btn btn-info" onClick="location.href = '/listAccessPoints/<%=data[i].id%>';">Assign Access</button></td>
+                             
                         </tr> <%}%>                                    
                                             
                                             
