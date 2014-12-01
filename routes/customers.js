@@ -249,16 +249,19 @@ exports.listAccessPoints = function(req, res){
 
 exports.showUserAccess = function(req,res){
 	var id = req.params.id;
+	var name = req.params.name;
 	var connection = mysqldb.getConnection();
 	connection.connect();
 	connection.query("SELECT ap.id as ap_id,ap.name as ap_name, u.firstname as firstname,u.lastname as lastname, a.user_id as user_id, a.isAllowed as isAllowed, a.valid_upto as valid_upto from accesspoints ap join access a join user u WHERE a.access_id = ap.id AND a.user_id= u.id AND a.access_id = ?", [id], function(err, rows){
 		if(err)
 			console.log("Error fetching results : %s", err);
 		console.log(rows);
-/*		var validity = rows[0].valid_upto.toString();
-		validity = validity.substring(0, validity.length-42);
-		console.log(validity);*/
-		res.render('showUserAccess',{page_title:"Access to Users", data: rows,ap_name:rows[0].ap_name,ap_id:rows[0].ap_id});
+	/*		var validity = rows[0].valid_upto.toString();
+			validity = validity.substring(0, validity.length-42);
+			console.log(validity);*/
+			res.render('showUserAccess',{page_title:"Access to Users", data: rows, ap_id: id, ap_name:name});
+		
+		
 	});
 	connection.end();
 }

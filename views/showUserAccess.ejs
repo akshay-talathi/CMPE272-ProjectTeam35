@@ -50,7 +50,7 @@
                                 <a href="#">Manage Access Points</a>
                             </li>
                             <li class="">
-                                <a href="#">Assign Access</a>
+                                <a href="/listAccessPoints">Assign Access</a>
                             </li>
                             
                         </ul>
@@ -71,9 +71,9 @@
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
-                                
+
                                 <h3><%=ap_name%></h3>
-                                    
+                                   
                                     <div class="table-toolbar">
                                       <div class="btn-group">
                                          <a href="http://localhost:4300/assignAccess/<%=ap_id%>"><button class="btn btn-success">Grant Access <i class="icon-plus icon-white"></i></button></a>
@@ -112,7 +112,7 @@
             
              							}else{ %>
              							<div>
-             								<span>No Access Point</span>
+             								<span><h4><font color = "red">No user has been given access to this Access Point yet.</font</h4></span>
              							</div>
              							<% } %>
             
