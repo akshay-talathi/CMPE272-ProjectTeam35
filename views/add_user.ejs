@@ -2,7 +2,7 @@
 <html>
     
     <head>
-        <title>Tables</title>
+        <title>Add User</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap-theme.min.css">
@@ -28,14 +28,14 @@
               	<div class="nav-collapse collapse">
              		<ul class="nav pull-right">
                			<li class="dropdown">
-                    		<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Vincent Gabriel <i class="caret"></i></a>
+                    		<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Admin <i class="caret"></i></a>
                       		<ul class="dropdown-menu">
                            		<li>
                                		<a tabindex="-1" href="#">Profile</a>
                             	</li>
                             	<li class="divider"></li>
                             	<li>
-            	                	<a tabindex="-1" href="login.html">Logout</a>
+            	                	<a tabindex="-1" href="#">Logout</a>
             	            	</li>
         	         		</ul>
  	                	</li>
@@ -82,10 +82,10 @@
  
     <div class="control-group">
       <!-- E-Mail -->
-      <label class="control-label" for="email">E-Mail ID</label>
+      <label class="control-label" for="email">Email ID</label>
       <div class="controls">
         <input type="email" id="email" name="email" placeholder="Email ID" class="input-xlarge" required>
-        <p class="help-block">Please provide your E-Mail</p>
+        <p class="help-block">Please provide your E-mail</p>
       </div>
     </div>
  
@@ -103,6 +103,8 @@
       <label class="control-label" for="Contact">Contact</label>
       <div class="controls">
         <input type="text" id="contact" name="contact" placeholder="Contact" class="input-xlarge" pattern="[1-9]{1}[0-9]{9}" required>
+                <p class="help-block">Note: Contact should be 10 digit number</p>
+        
       </div>
     </div>
 
