@@ -35,7 +35,8 @@ exports.saveAccessPoints = function(req, res) {
     console.log("input ------" + input);
     var data = {
         name : input.name,
-        organization_id : org_id
+        organization_id : org_id,
+        access_point_id : input.accesspoint
     };
     console.log("data.name" + data.name);
     var connection = mysqldb.getConnection();

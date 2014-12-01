@@ -114,7 +114,7 @@
                             <td>
                             	<button type="button" class="btn btn-warning" onClick="location.href = '/organizations/edit/<%=data[i].id%>';">Edit</button>
                            		
-                           		<!--<button type="button" class="btn btn-danger" onClick="location.href = '/organizations/delete/<%=data[i].id%>';">Delete</button>-->
+                           		
                            		
                            		
                            		<button type="button" class="btn btn-danger" onClick="location.href = '/organizations/<%=organization_id%>/delete/<%=data[i].id%>';">Delete</button>
@@ -126,7 +126,7 @@
                              
                              </td>
                              
-                      <td><button type="button" class="btn btn-info" onClick="location.href = '/listAccessPoints/<%=data[i].id%>';">Assign Access</button></td>
+                      <td><button type="button" class="btn btn-info" onClick="location.href = '/listAccessPoints/<%=data[i].name%>/<%=data[i].id%>';">Assign Access</button></td>
                              
                         </tr> <%}%>                                    
                                             
