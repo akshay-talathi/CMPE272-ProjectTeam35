@@ -56,7 +56,7 @@
         <br>
         <div>
 
-<form class="form-horizontal" action="/organizations/<%=data[0].org_id%>/users/edit/<%=data[0].user_id%>" method="POST">
+<form class="form-horizontal" action="/organizations/<%=data[0].org_id%>/users/edit/<%=data[0].id%>" method="POST">
   <fieldset>
     <div id="legend" style="margin-left: 20px;">
       <legend class="">Edit User</legend>
@@ -90,7 +90,7 @@
     
     <div class="control-group">
       <!-- Hidden field for User ID -->
-        <input type="hidden" id="user_id" name="user_id" value="<%=data[0].user_id%>" class="input-xlarge" required>
+        <input type="hidden" id="id" name="user_id" value="<%=data[0].id%>" class="input-xlarge" required>
     </div>
  
     <div class="control-group">
@@ -126,22 +126,6 @@
           <option name="0" value="0" selected="selected">Inactive</option>
         </select><%}%>
         <p class="help-block">Select the current status of the user</p>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <!-- Organization ID -->
-      <label class="control-label"  for="org_id">Organization ID</label>
-      <div class="controls">
-        <select class = "org_id" data-style="btn-info" name="org_id">
-      	<option name="1" value="1">1</option>
-        <option name="2" value="2">2</option>
-        <option name="3" value="3">3</option>
-        <option name="4" value="4">4</option>
-        <option name="5" value="5">5</option>
-        <option name="6" value="6">6</option>
-    	</select>
-    	<p class="help-block">Select the current organization of the user</p>
       </div>
     </div>
  

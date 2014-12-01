@@ -67,9 +67,9 @@ app.get('/t', customers.t);
 app.get('/users/register', users.addUser);
 app.post('/users/register', users.saveUser);//route delete customer
 app.get('/organizations/:id/users', users.usersList);
-app.get('/organizations/:org_id/users/delete/:user_id', users.delete_user);//edit customer route , get n post
-app.get('/organizations/:org_id/users/edit/:user_id', users.editUser);
-app.post('/organizations/:org_id/users/edit/:user_id',users.save_edit_user);
+app.get('/organizations/:org_id/users/delete/:id', users.deactivate_user);//edit customer route , get n post
+app.get('/organizations/:org_id/users/edit/:id', users.editUser);
+app.post('/organizations/:org_id/users/edit/:id',users.save_edit_user);
 
 //Accesspoints Routes
 

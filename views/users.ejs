@@ -76,7 +76,6 @@
                                         <thead>
                                             <tr>
                                                 <th width="50px">No</th>
-                                                <th>User ID</th>
                                                 <th>First Name</th>
                                                 <th>Last Name</th>
                                                 <th>Email</th>
@@ -89,7 +88,6 @@
                                               for(var i = 0;i < data.length;i++) { %>
                                                 <tr>
                                                   <td><%=(i+1)%></td>
-                                                  <td><%=data[i].user_id%></td>
                                                   <td><%=data[i].firstname%></td>
                                                   <td><%=data[i].lastname%></td>
                                                   <td><%=data[i].email%></td>
@@ -98,12 +96,8 @@
                                                   <td>Inactive</td><% }%>
                                                   <td>
                                                     <div class="btn-group">
-                                                      <button type="button" class="btn btn-warning" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/edit/<%=data[i].user_id%>';">Edit</button>
-                                                       <button type="button" class="btn btn-danger" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/delete/<%=data[i].user_id%>';">Deactivate</button>
-                                                      <!--<a class="a-inside edit" href="/organizations/<%=data[i].org_id%>/users/edit/<%=data[i].user_id%>">Edit</a>
-                                                     
-                                                      <a class="a-inside delete" href="/organizations/<%=data[i].org_id%>/users/delete/<%=data[i].user_id%>">Deactivate</a>-->
-                                                     
+                                                      <button type="button" class="btn btn-warning" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/edit/<%=data[i].id%>';">Edit</button>
+                                                       <button type="button" class="btn btn-danger" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/delete/<%=data[i].id%>';">Deactivate</button>                                                   
                                                   </td>
                                               </tr>
                                           <% }
