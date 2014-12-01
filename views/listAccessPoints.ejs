@@ -69,7 +69,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Access Points</th>
-                                                
+                                                <th>Manage Access</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -77,7 +77,10 @@
                            					
                            					for (var i=0; i<data.length;i++) { %>
                                             <tr class="odd gradeX">
-                                                <td><a class="biz-name" href="http://localhost:4300/showUserAccess/<%=data[i].name%>/<%=data[i].id%>" data-hovercard-id="AaSs-2r6KQNe00oJu1ft8Q"><%=data[i].name%></a></td>
+                                                <td><%=data[i].name%></a></td>
+                                            	
+                                            	<td><button type="button" class="btn btn-primary" onClick="location.href = '/showUserAccess/<%=data[i].name%>/<%=data[i].id%>';">Manage Access</button></td>
+                                            	
                                             </tr>
                                             <% }
             
