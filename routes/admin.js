@@ -31,12 +31,15 @@ exports.logindo = function(req, res) {
 					}
 					else
 					{
-						result = 'true';
-						connection.end();
-						res.render('home', {
-							page_title : "Homepage - Node.js",
-							data : rows
-						});
+						if(rows[0].isAdmin == 1){
+							connection.end();
+							res.render('home', {
+								page_title : "Homepage - Node.js",
+								data : rows
+							});
+						}else{
+							res.redirect('/');
+						}	
 					}
 				}
 			});
