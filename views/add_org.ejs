@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
     
-    <head>
-        <title>Add Organization</title>
+   <head>
+        <title>Edit User</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap-theme.min.css">
@@ -23,7 +23,7 @@
 	        <div class="container-fluid">
   	        	<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
  	            	<span class="icon-bar"></span>
-                 	<span class="icon-bar"></span>
+                 	<span class="icon-bar"></span> 
               	</a>
               	<a class="brand" href="/organizations">Admin Panel</a>
               	<div class="nav-collapse collapse">
@@ -41,6 +41,14 @@
         	         		</ul>
  	                	</li>
              		</ul>
+     	        	<ul class="nav">
+ 	                	<li class="">
+  	                		<a href="/organizations">Manage Organization</a>
+                    	</li>
+                    	
+             		</ul>
+       			</div>
+                    <!--/.nav-collapse -->
                 </div>
             </div>
         </div>
@@ -90,22 +98,13 @@
               	<a class="brand" href="/organizations">Admin Panel</a>
               	<div class="nav-collapse collapse">
                         <ul class="nav pull-right">
-                            <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> yo <i class="caret"></i>
-
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a tabindex="-1" href="#">Profile</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a tabindex="-1" href="#">Logout</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        
+			               			<li>
+			                    		<a href="#" role="button" class="" > <i class="icon-user"></i> <%=sess.firstname%>&nbsp;<%=sess.lastname%></a>
+			 	                	</li>
+			 	                	<li>
+			 	                		<a href="#" role="button" class=""> Logout</a>
+			 	                	</li>
+			             		</ul>
 
      	        	<ul class="nav">
  	                	<li class="">
