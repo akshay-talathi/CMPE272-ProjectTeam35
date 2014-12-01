@@ -82,7 +82,7 @@ app.post('/organizations/:org_id/accesspoints/:id', accesspoints.saveDetailsAcce
 
 //prashant luthra Routes
 
-app.get('/listAccessPoints', customers.listAccessPoints);
+app.get('/listAccessPoints/:id', customers.listAccessPoints);
 app.get('/showUserAccess/:name/:id', customers.showUserAccess);
 app.get('/assignAccess/:id', customers.assignAccess);
 app.post('/postAccess/:id', customers.postAccess);

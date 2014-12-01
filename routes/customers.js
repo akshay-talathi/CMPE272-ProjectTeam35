@@ -236,9 +236,10 @@ exports.logindo = function(req, res) {
 ///////prashant luthra/////////
 
 exports.listAccessPoints = function(req, res){
+	var id = req.params.id;
 	var connection = mysqldb.getConnection();
 	connection.connect();
-	connection.query('SELECT * from accesspoints', function(err, rows){
+	connection.query('SELECT * from accesspoints where organization_id = ?',[id], function(err, rows){
 		if(err)
 			console.log("Error getting values % s", err);
 		res.render('listAccessPoints', {page_title:"AccessPoints", data:rows});
