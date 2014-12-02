@@ -14,14 +14,14 @@
 		  </script>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> 
-<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <script src="/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+         </script>
     </head>
     
     <body>
@@ -39,7 +39,7 @@
 	                    		<a href="#" role="button" class="" > <i class="icon-user"></i> <%=sess.firstname%>&nbsp;<%=sess.lastname%></a>
 	 	                	</li>
 	 	                	<li>
-	 	                		<a href="#" role="button" class=""> Logout</a>
+	 	                		<a href="/logout" role="button" class=""> Logout</a>
 	 	                	</li>
 	             		</ul>
                         <ul class="nav">
@@ -67,9 +67,10 @@
 								<br/>
 								<br/>
 								<br/>
+								<br/>
+								<br/>
 								
-								
-							<form method="POST" id="signup-form" class="yform signup-form  city-hidden" action="/postUpdate/<%=data.u_id%>">
+							<form method="POST" id="signup-form" class="yform signup-form  city-hidden" action="/postUpdate/<%=ap_id%>/<%=data.u_id%>">
 							
 							<input type = "hidden" value="<%=data.access_id%>" name = "access_id">
 							<div class="form-group">
@@ -98,15 +99,15 @@
                             </div>
                             <%}%>
                             <br/>
-                                 <%
+                            
+                            	<%
 						         	var validity = valid_temp.toString();
 						        	validity = validity.substring(0, validity.length-42);         
 						         %>
-						         
-						         <label class="placeholder-sub">Valid Upto:</label>
-                                 <input type="text" value="<%=validity%>" required="required" placeholder="Click here for access validity" name="validity" id="datepicker">
-                                 
-                                 
+						        <div class="form-group"> 
+						         <label class="placeholder-sub">Valid Upto</label>
+                                 <input type="text" value="<%=validity%>" placeholder="Click here for access validity" name="validity" id="datepicker">
+                                 </div>   
                             </div>
                             <button type="submit" class="btn btn-default">Update</button>
                             </form>
@@ -117,18 +118,11 @@
             </div>
             <hr>
             <footer>
-                <p>&copy; Prashant 2013</p>
+                
             </footer>
         </div>
-        <!--/.fluid-container-->
-
-        <script src="/js/jquery-1.9.1.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/jquery.dataTables.min.js"></script>
-
-
-        <script src="/js/scripts.js"></script>
-        <script src="/js/DT_bootstrap.js"></script>
+        
+   
     </body>
 
 </html>

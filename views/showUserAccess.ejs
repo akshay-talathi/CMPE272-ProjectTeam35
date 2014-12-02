@@ -31,7 +31,7 @@
 	                    		<a href="#" role="button" class="" > <i class="icon-user"></i> <%=sess.firstname%>&nbsp;<%=sess.lastname%></a>
 	 	                	</li>
 	 	                	<li>
-	 	                		<a href="#" role="button" class=""> Logout</a>
+	 	                		<a href="/logout" role="button" class=""> Logout</a>
 	 	                	</li>
 	             		</ul>
                         <ul class="nav">
@@ -76,7 +76,7 @@
                            
                            					for (var i=0; i<data.length;i++) { %>
                                             <tr class="odd gradeX">
-                                                <td><a class="biz-name" href="http://localhost:4300/updateUserAccess/<%=data[i].user_id%>" data-hovercard-id="AaSs-2r6KQNe00oJu1ft8Q"><%=data[i].firstname%>&nbsp;<%=data[i].lastname%></a></td>
+                                                <td><a class="biz-name" href="http://localhost:4300/updateUserAccess/<%=ap_id%>/<%=data[i].user_id%>" data-hovercard-id="AaSs-2r6KQNe00oJu1ft8Q"><%=data[i].firstname%>&nbsp;<%=data[i].lastname%></a></td>
                                                 <td><%{%>
          											<img src = "/images/<%=data[i].isAllowed%>.png" />
          											<%}%>
@@ -110,7 +110,7 @@
             </div>
             <hr>
             <footer>
-                <p>&copy; Prashant 2013</p>
+                
             </footer>
         </div>
         <!--/.fluid-container-->
