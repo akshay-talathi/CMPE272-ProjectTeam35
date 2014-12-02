@@ -16,7 +16,8 @@ var accesspoints = require('./routes/accesspoints');
 var admin = require('./routes/admin');
 var app = express();
 var connection  = require('express-myconnection'); 
-//var mysql = require('mysql');
+var flash = require('connect-flash');
+app.use(flash());
 	
 // all environments
 app.set('port', process.env.PORT || 4300);
@@ -65,8 +66,12 @@ app.post('/organizations/:id', organizations.saveDetails);
 app.get('/t', customers.t);
 //Users Routes
 
-//app.get(':org_id//users/register', users.addUser);
+
 app.get('/organizations/:org_id/unregistered/users', users.unregUsersList);
+app.get('/register', users.addUser);
+app.post('/register', users.saveUser);
+app.post('/unregistered/users', users.unregUsersList);
+
 app.get('/organizations/:org_id/users/add/:id', users.addUseToOrg);
 app.post('/users/:org_id/register', users.saveUser);//route delete customer
 app.get('/organizations/:id/users', users.usersList);
