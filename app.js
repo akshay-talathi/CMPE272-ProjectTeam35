@@ -17,13 +17,14 @@ var admin = require('./routes/admin');
 var app = express();
 var connection  = require('express-myconnection'); 
 //var mysql = require('mysql');
-var sess=null;	
+	
 // all environments
 app.set('port', process.env.PORT || 4300);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //app.use(express.favicon());
 app.use(session({secret: 'ssshhhhh'}));
+var sess;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.logger('dev'));
@@ -91,8 +92,9 @@ app.get('/listAccessPoints/:name/:id', customers.listAccessPoints);
 app.get('/showUserAccess/:name/:id', customers.showUserAccess);
 app.get('/assignAccess/:id', customers.assignAccess);
 app.post('/postAccess/:id', customers.postAccess);
-app.get('/updateUserAccess/:id', customers.updateUserAccess);
-app.post('/postUpdate/:id', customers.postUpdate);
+app.get('/updateUserAccess/:ap_id/:user_id', customers.updateUserAccess);
+app.post('/postUpdate/:ap_id/:user_id', customers.postUpdate);
+app.get('/logout', customers.logout);
 
 //-----------------------------------------------------------------
 

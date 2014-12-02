@@ -236,6 +236,11 @@ exports.logindo = function(req, res) {
 ///////prashant luthra/////////
 
 exports.listAccessPoints = function(req, res){
+	if(req.session == null)
+	{
+		redirect('/');
+	}
+	else{
 	var id = req.params.id;
 	var name = req.params.name;
 	var connection = mysqldb.getConnection();
@@ -247,6 +252,7 @@ exports.listAccessPoints = function(req, res){
 	});
 	connection.end();
 	//}
+	}
 }
 
 exports.showUserAccess = function(req,res){
@@ -320,17 +326,20 @@ exports.postAccess = function(req, res){
 }
 
 exports.updateUserAccess = function(req,res){
-	var us_id = req.params.id;
-	console.log(us_id);
+	var user_id = req.params.user_id;
+	var ap_id = req.params.ap_id;
+	console.log(user_id);
+	console.log(ap_id);
 	var connection = mysqldb.getConnection();
 	connection.connect();
-	var queryString = 'SELECT u.id as u_id,u.email as email, a.access_id as access_id, a.isAllowed as isAllowed, a.valid_upto as valid_upto FROM user u JOIN access a WHERE u.id = a.user_id AND a.user_id = ?';
-	connection.query(queryString, [us_id], function(err, rows){;
+	//var queryString = 'SELECT u.id as u_id,u.email as email, a.access_id as access_id, a.isAllowed as isAllowed, a.valid_upto as valid_upto FROM user u JOIN access a WHERE u.id = a.user_id AND a.access_id = ?  AND a.user_id = ?';
+	//connection.query(queryString, [ap_id],[user_id], function(err, rows){;
+	connection.query("SELECT u.id as u_id,u.email as email, a.access_id as access_id, a.isAllowed as isAllowed, a.valid_upto as valid_upto FROM user u JOIN access a WHERE u.id = a.user_id AND a.access_id = ?  AND a.user_id = ?",[ap_id,user_id], function(err, rows){
 		if(err)
 			console.log("Error getting values % s", err);
 		console.log("Rows(email): "+rows[0].email);
 		console.log("Rows(): "+rows[0].valid_upto);
-		res.render('updateUserAccess', {page_title:"Update user access", data:rows[0], valid_temp:rows[0].valid_upto, email_temp: rows[0].email, allowed_temp: rows[0].isAllowed});
+		res.render('updateUserAccess', {page_title:"Update user access", data:rows[0], valid_temp:rows[0].valid_upto, email_temp: rows[0].email, allowed_temp: rows[0].isAllowed,ap_id:ap_id});
 		//console.log(data);
 		
 	});
@@ -339,9 +348,10 @@ exports.updateUserAccess = function(req,res){
 }
 
 exports.postUpdate = function(req,res){
-	var id = req.params.id;
-	console.log(id);
-	
+	var user_id = req.params.user_id;
+	var ap_id = req.params.ap_id;
+	console.log(user_id);
+	console.log(ap_id);
 	var input = JSON.parse(JSON.stringify(req.body));
 	console.log(input);
 	console.log(typeof(input.validity));
@@ -355,7 +365,7 @@ exports.postUpdate = function(req,res){
 			valid_upto : input.validity,
 	};
 
-	var	query = connection.query("UPDATE access set ? where user_id =? AND access_id = ?",[data, id,input.access_id],function(err,rows){
+	var	query = connection.query("UPDATE access set isAllowed = ?, valid_upto=? where user_id =? AND access_id = ?",[data.isAllowed, data.valid_upto, user_id,ap_id],function(err,rows){
 		if(err)
 			console.log("Error Inserting: %s",err);
 		else
@@ -372,36 +382,29 @@ exports.postUpdate = function(req,res){
 	});
 }
 
+exports.logout = function(req, res) {
+    //var firstname = sess.firstname;
+    //var lastlogin = new Date();
+    //console.log(email);
+    req.session.destroy(function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+        		console.log("Inside Logout destroy function");
+        		req.session = null;
+        		console.log("Sesion: "+req.session);
+                res.redirect('/');
+        }
+    });
+}
+
+
 
 ////////// PL - end////////////
 
 
 
-exports.get_reviews = function(req, res) {
-    var name = req.params.name;
-    // if(req.session.fname == undefined){
-    // res.redirect("/");
-    // }
-    // else {
-    var connection = mysqldb.getConnection();
 
-    connection.query("Select * from reviews where element_name = ?", [name],
-        function(err, rows) {
-            if (err)
-                console.log("Error fetching results : %s", err);
-            res.render('get_reviews', {
-                page_title: "Categories",
-                data: rows,
-                element_name: name,
-                name: sess.fname,
-                lastlogin: sess.lastlogin,
-                email: sess.email
-            });
-        });
-    connection.end();
-    // }
-
-}
 
 exports.save_edit = function(req, res) {
     var input = JSON.parse(JSON.stringify(req.body));
@@ -449,27 +452,7 @@ exports.delete_customer = function(req, res) {
 
 
 
-exports.logout = function(req, res) {
-    var email = sess.email;
-    var lastlogin = new Date();
-    console.log(email);
-    req.session.destroy(function(err) {
-        if (err) {
-            console.log(err);
-        } else {
-            var connection = mysqldb.getConnection();
 
-            connection.query("UPDATE users set lastlogin = ? WHERE email = ? ", [lastlogin, email], function(err, rows) {
-                if (err) {
-                    cosole.log("error : %s", err);
-                }
-                res.redirect('/');
-            });
-
-            connection.end();
-        }
-    });
-}
 
 exports.getHistoryPage = function(req, res) {
     res.render('History', {
