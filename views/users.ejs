@@ -26,23 +26,7 @@
                     </a>
                     <a class="brand" href="/organizations">Admin Panel</a>
                     <div class="nav-collapse collapse">
-                        <ul class="nav pull-right">
-                            <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Admin <i class="caret"></i>
-
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a tabindex="-1" href="#">Profile</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a tabindex="-1" href="login.html">Logout</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="nav">
+                         <ul class="nav">
                             <li class="">
                                 <a href="/organizations">Manage Organization</a>
                             </li>
@@ -68,7 +52,7 @@
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group">
-                                         <button class="btn btn-success" onClick="location.href = '/users/register';">Add New User <i class="icon-plus icon-white"></i></button></a>
+                                         <button class="btn btn-success" onClick="location.href = '/users/<%=org_id%>/register';">Add New User <i class="icon-plus icon-white"></i></button></a>
                                       </div>
                                    </div>
                                     <hr>
@@ -76,7 +60,6 @@
                                         <thead>
                                             <tr>
                                                 <th width="50px">No</th>
-                                                <th>User ID</th>
                                                 <th>First Name</th>
                                                 <th>Last Name</th>
                                                 <th>Email</th>
@@ -89,7 +72,6 @@
                                               for(var i = 0;i < data.length;i++) { %>
                                                 <tr>
                                                   <td><%=(i+1)%></td>
-                                                  <td><%=data[i].user_id%></td>
                                                   <td><%=data[i].firstname%></td>
                                                   <td><%=data[i].lastname%></td>
                                                   <td><%=data[i].email%></td>
@@ -98,12 +80,8 @@
                                                   <td>Inactive</td><% }%>
                                                   <td>
                                                     <div class="btn-group">
-                                                      <button type="button" class="btn btn-warning" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/edit/<%=data[i].user_id%>';">Edit</button>
-                                                       <button type="button" class="btn btn-danger" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/delete/<%=data[i].user_id%>';">Deactivate</button>
-                                                      <!--<a class="a-inside edit" href="/organizations/<%=data[i].org_id%>/users/edit/<%=data[i].user_id%>">Edit</a>
-                                                     
-                                                      <a class="a-inside delete" href="/organizations/<%=data[i].org_id%>/users/delete/<%=data[i].user_id%>">Deactivate</a>-->
-                                                     
+                                                      <button type="button" class="btn btn-warning" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/edit/<%=data[i].id%>';">Edit</button>
+                                                       <button type="button" class="btn btn-danger" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/delete/<%=data[i].id%>';">Deactivate</button>                                                   
                                                   </td>
                                               </tr>
                                           <% }

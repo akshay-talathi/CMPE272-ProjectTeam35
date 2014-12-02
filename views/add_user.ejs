@@ -26,20 +26,6 @@
               	</a>
               	<a class="brand" href="/organizations">Admin Panel</a>
               	<div class="nav-collapse collapse">
-             		<ul class="nav pull-right">
-               			<li class="dropdown">
-                    		<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Admin <i class="caret"></i></a>
-                      		<ul class="dropdown-menu">
-                           		<li>
-                               		<a tabindex="-1" href="#">Profile</a>
-                            	</li>
-                            	<li class="divider"></li>
-                            	<li>
-            	                	<a tabindex="-1" href="#">Logout</a>
-            	            	</li>
-        	         		</ul>
- 	                	</li>
-             		</ul>
      	        	<ul class="nav">
  	                	<li class="">
   	                		<a href="/organizations">Manage Organization</a>
@@ -55,7 +41,7 @@
         <br>
         <br>
         <div>
-<form class="form-horizontal" action="/users/register" method="POST">
+<form class="form-horizontal" action="/users/<%=org_id%>/register" method="POST">
   <fieldset>
     <div id="legend" style="margin-left: 20px;" align="center">
       <legend class="">Register User</legend>
@@ -103,22 +89,7 @@
       </div>
     </div>
 
-    <div class="control-group">
-      <!-- Organization ID -->
-      <label class="control-label" for="org_id">Organization ID</label>
-      <div class="controls">
-        <select class = "org_id" data-style="btn-info" name="org_id">
- 			<option name="1" value="1">1</option>
-  			<option name="2" value="2">2</option>
-  			<option name="3" value="3">3</option>
-  			<option name="4" value="4">4</option>
-  			<option name="5" value="5">5</option>
-  			<option name="6" value="6">6</option>
-		</select>
-      </div>
-    </div>
- 
-    <div class="control-group">
+        <div class="control-group">
       <!-- Button -->
       <div class="controls">
         <button class="btn btn-success" value="save" name="Submit" >Register</button>
