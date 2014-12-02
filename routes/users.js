@@ -168,3 +168,42 @@ exports.deactivate_user = function(req, res) {
 
             });
 };
+
+exports.unregUsersList = function(req, res) {
+    var org_id = req.param('org_id');
+    console.log('org_id: '+org_id);
+    var connection = mysqldb.getConnection();
+    connection.connect();
+    connection.query("SELECT * FROM user where org_id IS NULL",
+            function(err, rows) {
+
+                if (err)
+                    console.log("Error Selecting : %s ", err);
+                console.log(rows);
+
+                res.render('addUnregUsers', {
+                    page_title : "users - Node.js",
+                    data : rows,
+                    org_id : org_id
+                });
+
+            });
+    connection.end();
+};
+
+exports.addUseToOrg = function(req, res) {
+	var id = req.params.id;
+    var org_id = req.params.org_id;
+    console.log('org_id: '+org_id);
+    var connection = mysqldb.getConnection();
+    connection.connect();
+    connection.query("UPDATE user set org_id = "+org_id+" WHERE id = "+id,
+    		function(err, rows) {
+
+        if (err)
+            console.log("Error deleting : %s ", err);
+
+        res.redirect('/organizations/' + org_id + '/users');
+
+    });
+};

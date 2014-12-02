@@ -50,14 +50,6 @@
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
-                                   <div class="table-toolbar">
-                                      <div class="btn-group">
-                                      <form class="form-horizontal" action="/unregistered/users" method="POST">
-                                         <button class="btn btn-success">Add More Users <i class="icon-plus icon-white"></i></button></a>
-                                      	<input type = "hidden" value = "<%=org_id%>" name = "org_id">
-                                      	</form>
-                                      </div>
-                                   </div>
                                     <hr>
                                     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
                                         <thead>
@@ -66,8 +58,7 @@
                                                 <th>First Name</th>
                                                 <th>Last Name</th>
                                                 <th>Email</th>
-                                                <th>Status</th>
-                                                <th width="120px">Action</th>
+                                                <th width="150px">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -78,13 +69,9 @@
                                                   <td><%=data[i].firstname%></td>
                                                   <td><%=data[i].lastname%></td>
                                                   <td><%=data[i].email%></td>
-                                                  <% if(data[i].isActive == 1) {%>
-                                                  <td>Active</td><%} else {%>
-                                                  <td>Inactive</td><% }%>
                                                   <td>
                                                     <div class="btn-group">
-                                                      <button type="button" class="btn btn-warning" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/edit/<%=data[i].id%>';">Edit</button>
-                                                       <button type="button" class="btn btn-danger" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/delete/<%=data[i].id%>';">Deactivate</button>                                                   
+                                                      <button type="button" class="btn btn-success" onClick="location.href = '/organizations/<%=org_id%>/users/add/<%=data[i].id%>';">Add User</button>
                                                   </td>
                                               </tr>
                                           <% }
@@ -96,6 +83,9 @@
                                         <% } %>
                                         </tbody>
                                       </table>
+                                      <div class="table-toolbar">
+                                         <button class="btn btn-danger" onClick="location.href = '/organizations/<%=org_id%>/users';">Back</button>
+                                   </div>
                                     </div>
                                    </div>
                                   </div>
