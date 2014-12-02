@@ -18,7 +18,7 @@ exports.usersList = function(req, res) {
 
                 if (err)
                     console.log("Error Selecting : %s ", err);
-                console.log(rows);
+                //console.log(rows);
 
                 res.render('users', {
                     page_title : "users - Node.js",
@@ -87,7 +87,7 @@ exports.saveUser = function(req, res) {
                                             function(err, rows) {
                                                 if (err)
                                                     console.log("Error Inserting: %s",err);
-                                                req.flash('error','You are registerd!');
+                                                req.flash('error','You are registered!');
                                                 connection.end();
                                                 res.redirect('/register');
 
@@ -144,15 +144,38 @@ res.redirect('/organizations/' + input.org_id + '/users');
 
 };
 
-exports.deactivate_user = function(req, res) {
+exports.resetPassword = function(req, res) {
+    console.log("Inside ReseT Password");
+	var id = req.params.id;
+    var org_id = req.params.org_id;
+    console.log("here Reset Password:" +id);
+    console.log("here Reset:" +org_id);
+    var connection = mysqldb.getConnection();
+    connection.connect();
+
+    connection.query("UPDATE user set password = SHA1('password1234') WHERE id = "+id ,
+            function(err, rows) {
+
+                if (err)
+                    console.log("Error deleting : %s ", err);
+
+                res.redirect('/organizations/' + org_id + '/users');
+
+            });
+    console.log("Password Reset complete");
+};
+
+exports.status_user = function(req, res) {
+	console.log("Here")
     var id = req.params.id;
     var org_id = req.params.org_id;
+    var sid = req.params.sid;
     console.log("here");
     var connection = mysqldb.getConnection();
     connection.connect();
     var data = {
 
-        isActive : 0
+        isActive : sid
     };
 
     connection.query("UPDATE user set ? WHERE id = ? ", [ data, id ],
@@ -165,6 +188,7 @@ exports.deactivate_user = function(req, res) {
 
             });
 };
+
 
 exports.unregUsersList = function(req, res) {
     var org_id = req.param('org_id');

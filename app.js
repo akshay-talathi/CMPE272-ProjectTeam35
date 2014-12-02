@@ -16,9 +16,9 @@ var accesspoints = require('./routes/accesspoints');
 var admin = require('./routes/admin');
 var app = express();
 var connection  = require('express-myconnection'); 
+//var mysql = require('mysql');
 var flash = require('connect-flash');
 app.use(flash());
-	
 // all environments
 app.set('port', process.env.PORT || 4300);
 app.set('views', path.join(__dirname, 'views'));
@@ -66,18 +66,13 @@ app.post('/organizations/:id', organizations.saveDetails);
 app.get('/t', customers.t);
 //Users Routes
 
-
-app.get('/organizations/:org_id/unregistered/users', users.unregUsersList);
 app.get('/register', users.addUser);
 app.post('/register', users.saveUser);
 app.post('/unregistered/users', users.unregUsersList);
-
 app.get('/organizations/:org_id/users/add/:id', users.addUseToOrg);
-app.post('/users/:org_id/register', users.saveUser);//route delete customer
 app.get('/organizations/:id/users', users.usersList);
-app.get('/organizations/:org_id/users/delete/:id', users.deactivate_user);//edit customer route , get n post
-app.get('/organizations/:org_id/users/edit/:id', users.editUser);
-app.post('/organizations/:org_id/users/edit/:id',users.save_edit_user);
+app.get('/organizations/:org_id/users/status/:sid/:id', users.status_user);//edit customer route , get n post
+app.get('/organizations/:org_id/users/resetpassword/:id', users.resetPassword);
 
 //Accesspoints Routes
 
