@@ -2,7 +2,7 @@ var mysqldb = require('../mysqldb.js');
 var util = require('util');
 
 exports.orgList = function(req, res) {
-	 if (req.session.fname == undefined) {
+	 if (req.session.firstname == undefined) {
 	        res.redirect("/");
 	    } else {
 	    	 var connection = mysqldb.getConnection();
