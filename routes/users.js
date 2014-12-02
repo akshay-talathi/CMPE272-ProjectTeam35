@@ -203,7 +203,7 @@ exports.addUseToOrg = function(req, res) {
         if (err)
             console.log("Error deleting : %s ", err);
 
-        res.redirect('/organizations/' + org_id + '/users');
+        res.redirect('/organizations/' + org_id + '/unregistered/users');
 
     });
 };

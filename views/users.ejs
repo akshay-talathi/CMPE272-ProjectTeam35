@@ -52,10 +52,7 @@
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group">
-                                      <form class="form-horizontal" action="/unregistered/users" method="POST">
-                                         <button class="btn btn-success">Add More Users <i class="icon-plus icon-white"></i></button></a>
-                                      	<input type = "hidden" value = "<%=org_id%>" name = "org_id">
-                                      	</form>
+                                         <button class="btn btn-success" onClick="location.href = '/organizations/<%=org_id%>/unregistered/users';">Add More Users</button>
                                       </div>
                                    </div>
                                     <hr>
