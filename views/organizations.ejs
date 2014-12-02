@@ -24,12 +24,11 @@
   	        	<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
  	            	<span class="icon-bar"></span>
                  	<span class="icon-bar"></span>
+                 	
               	</a>
               	<a class="brand" href="/organizations">Admin Panel</a>
               	
-              	
-             		
-             		   <div class="nav-collapse collapse">
+              		   <div class="nav-collapse collapse">
                          <ul class="nav pull-right">
 			               			<li>
 			                    		<a href="#" role="button" class="" > <i class="icon-user"></i> <%=sess.firstname%>&nbsp;<%=sess.lastname%></a>
@@ -92,8 +91,9 @@
 
                             <th width="121px">Action</th>
                             <th width="165px">Access Points</th>
-                            <th width="160px">Assign Access</th>
+                           <!-- <th width="160px">Assign Access</th>-->
 							<th width="160px">Users</th>
+							
                         </tr>
                     </thead>
                         <%
@@ -118,7 +118,7 @@
                              
                              </td>
                              
-                             <td><button type="button" class="btn btn-primary" onClick="location.href = '/listAccessPoints/<%=data[i].name%>/<%=data[i].id%>';">Assign Access</button></td>
+                            <!-- <td><button type="button" class="btn btn-primary" onClick="location.href = '/listAccessPoints/<%=data[i].name%>/<%=data[i].id%>';">Assign Access</button></td>-->
                              
                              
                              

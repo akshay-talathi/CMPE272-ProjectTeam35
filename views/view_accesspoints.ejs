@@ -83,6 +83,7 @@
 							<th width="50px">Access Point ID</th>
                             <th width="200px">Name</th>
                             <th width="100px">Action</th>
+                            <th width="100px">Manage Access</th>
                         </tr>
                     </thead>
                         <%
@@ -100,6 +101,8 @@
                             <button type="button" class="btn btn-warning" onClick="location.href = '/organizations/<%=organization_id%>/accesspoints/edit/<%=data[i].id%>';">Edit</button>
                            	<button type="button" class="btn btn-danger" onClick="location.href = '/organizations/<%=organization_id%>/accesspoints/delete/<%=data[i].id%>';">Delete</button>
                             </td>
+ 
+                          	<td><button type="button" class="btn btn-primary" onClick="location.href = '/showUserAccess/<%=data[i].name%>/<%=data[i].id%>';">Manage Access</button></td>
 
                         </tr> <%}%>                                    
                                             
