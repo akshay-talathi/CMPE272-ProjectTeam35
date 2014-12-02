@@ -2,20 +2,25 @@ var mysqldb = require('../mysqldb.js');
 var util = require('util');
 
 exports.orgList = function(req, res) {
-    var connection = mysqldb.getConnection();
-    connection.connect();
-    connection.query('SELECT * FROM organization', function(err, rows) {
+	 if (req.session.fname == undefined) {
+	        res.redirect("/");
+	    } else {
+	    	 var connection = mysqldb.getConnection();
+	    	    connection.connect();
+	    	    connection.query('SELECT * FROM organization', function(err, rows) {
 
-        if (err)
-            console.log("Error Selecting : %s ", err);
+	    	        if (err)
+	    	            console.log("Error Selecting : %s ", err);
 
-        console.log(rows);
-        res.render('organizations', {
-            page_title : "All Organizations - Node.js",
-            data : rows
-        });
-    });
-    connection.end();
+	    	        console.log(rows);
+	    	        res.render('organizations', {
+	    	            page_title : "All Organizations - Node.js",
+	    	            data : rows
+	    	        });
+	    	    });
+	    	    connection.end();
+	    }
+   
 };
 
 exports.addOrganization = function(req, res) {

@@ -260,11 +260,9 @@ exports.logout = function(req, res) {
             console.log(err);
         } else {
         		console.log("Inside Logout destroy function");
-        		//req.session = null;
-        		req.session.destroy(function(err) {
-        			  // cannot access session here
-        			})
-        		console.log("Sesion: "+req.session);
+        		req.session = null;
+        		sess = null;
+        		//console.log("Sesion: "+req.session);
                 res.redirect('/');
         }
     });
