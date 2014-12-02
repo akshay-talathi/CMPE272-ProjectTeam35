@@ -94,10 +94,10 @@ app.post('/organizations/:org_id/accesspoints/:id', accesspoints.saveDetailsAcce
 
 app.get('/listAccessPoints/:name/:id', customers.listAccessPoints);
 
-app.get('/showUserAccess/:name/:id', customers.showUserAccess);
-app.get('/assignAccess/:id', customers.assignAccess);
+app.get('/showUserAccess/:org_id/:name/:id', customers.showUserAccess);
+app.get('/assignAccess/:org_id/:id', customers.assignAccess);
 app.post('/postAccess/:id', customers.postAccess);
-app.get('/updateUserAccess/:ap_id/:user_id', customers.updateUserAccess);
+app.get('/updateUserAccess/:org_id/:ap_id/:user_id', customers.updateUserAccess);
 app.post('/postUpdate/:ap_id/:user_id', customers.postUpdate);
 app.get('/logout', customers.logout);
 
