@@ -13,12 +13,8 @@ exports.logindo = function(req, res) {
 	console.log(req.body);
 	var input = JSON.parse(JSON.stringify(req.body));
 	var connection = mysqldb.getConnection();
-	var data = {
-		user_id : input.user_id,
-		password : input.password,
-	};
 	connection.connect();
-	var query = connection.query("SELECT * from user WHERE user_id = '"+input.user_id+"' and password = SHA1('" + input.password + "')"
+	var query = connection.query("SELECT * from user WHERE email = '"+input.email+"' and password = SHA1('" + input.password + "')"
 			, function(err, rows) {
 				if (err){
 					console.log("Error fecthing details : %s", err);

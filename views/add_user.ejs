@@ -27,7 +27,6 @@
               	<a class="brand" href="/organizations">Admin Panel</a>
               	<div class="nav-collapse collapse">
      	        	<ul class="nav">
-                    	
              		</ul>
        			</div>
                     <!--/.nav-collapse -->
@@ -71,8 +70,8 @@
       <!-- Password-->
       <label class="control-label" for="password">Password</label>
       <div class="controls">
-        <input type="password" id="password" name="password" placeholder="Password" class="input-xlarge" pattern="[A-Z]{1}[a-z]{8,}" required>
-        <p class="help-block">Note: Password should be at least 8 characters: First capital letter and rest small letters</p>
+        <input type="password" id="password" name="password" placeholder="Password" class="input-xlarge" pattern="[A-Za-z0-9]{8,16}" required>
+        <p class="help-block">Note: The password must be at least 8 and no more than 16 characters long and consist of alphanumeric characters.</p>
       </div>
     </div>
  

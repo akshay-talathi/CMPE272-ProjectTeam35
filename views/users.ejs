@@ -80,8 +80,12 @@
                                                   <td>Inactive</td><% }%>
                                                   <td>
                                                     <div class="btn-group">
-                                                      <button type="button" class="btn btn-warning" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/edit/<%=data[i].id%>';">Edit</button>
-                                                       <button type="button" class="btn btn-danger" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/delete/<%=data[i].id%>';">Deactivate</button>                                                   
+                                                      <button type="button" class="btn btn-warning" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/resetpassword/<%=data[i].id%>';">Reset Password</button>
+                                                      <% if(data[i].isActive == 1) {%>
+                                                       <button type="button" class="btn btn-danger" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/status/0/<%=data[i].id%>';">Deactivate</button>
+                                                       <%}else{%>
+                                                       <button type="button" class="btn btn-success" onClick="location.href = '/organizations/<%=data[i].org_id%>/users/status/1/<%=data[i].id%>';">&nbsp;&nbsp;Activate&nbsp;&nbsp;</button>
+                                                       <%}%>
                                                   </td>
                                               </tr>
                                           <% }
