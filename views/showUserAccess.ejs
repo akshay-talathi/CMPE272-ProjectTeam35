@@ -24,7 +24,7 @@
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">Admin Panel</a>
+                    <a class="brand" href="#">Virtual Badge</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right">
 	               			<li>
@@ -66,9 +66,9 @@
                                     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2" >
                                         <thead>
                                             <tr>
-                                                <th>User Id</th>
-                                                <th>Is Allowed</th>
-                                                <th>Validity</th>
+                                                <th align="center" width="200px">Name</th>
+                                                <th width="80px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Is Allowed</th>
+                                                <th width="200px">Valid Upto</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -77,8 +77,8 @@
                            					for (var i=0; i<data.length;i++) { %>
                                             <tr class="odd gradeX">
                                                 <td><a class="biz-name" href="http://localhost:4300/updateUserAccess/<%=org_id%>/<%=ap_id%>/<%=data[i].user_id%>" data-hovercard-id="AaSs-2r6KQNe00oJu1ft8Q"><%=data[i].firstname%>&nbsp;<%=data[i].lastname%></a></td>
-                                                <td><%{%>
-         											<img src = "/images/<%=data[i].isAllowed%>.png" />
+                                                <td align="center"><%{%>
+         											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img height="5px" src = "/images/<%=data[i].isAllowed%>.png" />
          											<%}%>
          										</td>
          										<td>
@@ -86,7 +86,7 @@
 											         	var validity = data[i].valid_upto.toString();
 											        	validity = validity.substring(0, validity.length-42);         
 											         %>
-											         <%=validity%>
+											         <%=data[i].valid_upto.toString()%>
          										</td>
                                             </tr>
                                             

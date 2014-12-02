@@ -6,7 +6,7 @@ function getConnection(){
 	    user: 'root',
 	    password : '',
 	    port : 3306, //port mysql
-	    database:'Badge'
+	    database:'NewBadge'
 	});
 	return connection;
 }
