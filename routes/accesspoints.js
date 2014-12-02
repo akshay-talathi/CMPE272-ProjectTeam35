@@ -3,6 +3,9 @@ var util = require('util');
 
 exports.getAccessPoints = function(req, res) {
     var org_id = req.params.org_id;
+    if (req.session.firstname == undefined) {
+        res.redirect("/");
+    } else {
     var connection = mysqldb.getConnection();
     connection.query('SELECT * FROM AccessPoints where organization_id=?',
             [ org_id ], function(err, rows) {
@@ -17,7 +20,7 @@ exports.getAccessPoints = function(req, res) {
             });
 
     connection.end();
-
+    }
 };
 
 exports.addAccessPoints = function(req, res) {
@@ -39,6 +42,9 @@ exports.saveAccessPoints = function(req, res) {
         access_point_id : input.accesspoint
     };
     console.log("data.name" + data.name);
+    if (req.session.firstname == undefined) {
+        res.redirect("/");
+    } else {
     var connection = mysqldb.getConnection();
     console.log(data);
     connection.connect();
@@ -49,11 +55,15 @@ exports.saveAccessPoints = function(req, res) {
                 res.redirect('/organizations/' + org_id + '/accesspoints');
             });
     connection.end();
+    }
 }
 
 exports.editAccessPoints = function(req, res) {
     var id = req.params.id;
     var org_id = req.params.org_id;
+    if (req.session.firstname == undefined) {
+        res.redirect("/");
+    } else {
     var connection = mysqldb.getConnection();
     connection.connect();
     var query = connection.query(
@@ -71,6 +81,7 @@ exports.editAccessPoints = function(req, res) {
                 })
             });
     connection.end();
+    }
 }
 
 exports.saveDetailsAccessPoints = function(req, res) {
@@ -85,6 +96,9 @@ exports.saveDetailsAccessPoints = function(req, res) {
         id : id,
         name : input.name
     };
+    if (req.session.firstname == undefined) {
+        res.redirect("/");
+    } else {
     var connection = mysqldb.getConnection();
     console.log(data);
     connection.connect();
@@ -98,7 +112,7 @@ exports.saveDetailsAccessPoints = function(req, res) {
                         res.redirect('/organizations/' + org_id + '/accesspoints');
 
                     });
-
+    }
 };
 
 exports.deleteAccessPoints = function(req, res) {
@@ -108,6 +122,9 @@ exports.deleteAccessPoints = function(req, res) {
     var org_id = req.params.org_id;
 
     console.log(org_id);
+    if (req.session.firstname == undefined) {
+        res.redirect("/");
+    } else {
     var connection = mysqldb.getConnection();
     connection.connect();
     console.log("Called*****");
@@ -121,4 +138,5 @@ exports.deleteAccessPoints = function(req, res) {
 
             });
     connection.end();
+    }
 }

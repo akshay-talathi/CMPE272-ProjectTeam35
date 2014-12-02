@@ -13,7 +13,7 @@ exports.usersList = function(req, res) {
     console.log(org_id);
     var connection = mysqldb.getConnection();
     connection.connect();
-    connection.query("SELECT * FROM user where isAdmin = 0 and org_id = " +org_id ,
+    connection.query("SELECT * FROM user where isAdmin = 0 and org_id = ?",[org_id] ,
             function(err, rows) {
 
                 if (err)

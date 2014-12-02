@@ -24,6 +24,9 @@ exports.orgList = function(req, res) {
 };
 
 exports.addOrganization = function(req, res) {
+	if (req.session.firstname == undefined) {
+        res.redirect("/");
+    } else {
     var connection = mysqldb.getConnection();
     connection.query('SELECT * FROM organization', function(err, rows) {
         if (err)
@@ -36,7 +39,7 @@ exports.addOrganization = function(req, res) {
     });
 
     connection.end();
-
+    }
 };
 
 exports.saveOrg = function(req, res) {
@@ -46,6 +49,9 @@ exports.saveOrg = function(req, res) {
         name : input.name,
         description : input.description,
     };
+    if (req.session.firstname == undefined) {
+        res.redirect("/");
+    } else {
     var connection = mysqldb.getConnection();
     console.log(data);
     connection.connect();
@@ -56,6 +62,7 @@ exports.saveOrg = function(req, res) {
                 res.redirect('/organizations');
             });
     connection.end();
+    }
 }
 
 /*exports.home = function(req, res) {
@@ -79,6 +86,9 @@ exports.editOrg = function(req, res) {
     console.log("Here");
     var id = req.params.id;
     console.log(id);
+    if (req.session.firstname == undefined) {
+        res.redirect("/");
+    } else {
     var connection = mysqldb.getConnection();
     connection.connect();
     var query = connection.query("select * from Organization WHERE id = ?",
@@ -97,6 +107,7 @@ exports.editOrg = function(req, res) {
                 })
             });
     connection.end();
+    }
 }
 
 exports.saveDetails = function(req, res) {
@@ -110,6 +121,9 @@ exports.saveDetails = function(req, res) {
         name : input.name,
         description : input.description,
     };
+    if (req.session.firstname == undefined) {
+        res.redirect("/");
+    } else {
     var connection = mysqldb.getConnection();
     console.log(data);
     connection.connect();
@@ -124,12 +138,15 @@ exports.saveDetails = function(req, res) {
                 res.redirect('/organizations');
 
             });
-
+    }
 };
 
 exports.deleteOrganization = function(req, res) {
 
     var id = req.params.id;
+    if (req.session.firstname == undefined) {
+        res.redirect("/");
+    } else {
     var connection = mysqldb.getConnection();
     connection.connect();
 
@@ -143,4 +160,5 @@ exports.deleteOrganization = function(req, res) {
 
             });
     connection.end();
+    }
 }
