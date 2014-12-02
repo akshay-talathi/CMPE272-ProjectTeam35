@@ -68,7 +68,7 @@ app.get('/t', customers.t);
 
 app.get('/register', users.addUser);
 app.post('/register', users.saveUser);
-app.post('/unregistered/users', users.unregUsersList);
+app.get('/organizations/:org_id/unregistered/users', users.unregUsersList);
 app.get('/organizations/:org_id/users/add/:id', users.addUseToOrg);
 app.get('/organizations/:id/users', users.usersList);
 app.get('/organizations/:org_id/users/status/:sid/:id', users.status_user);//edit customer route , get n post
