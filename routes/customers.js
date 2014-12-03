@@ -359,6 +359,9 @@ exports.test = function(req, res) {
 
 /* Save the customer */
 exports.home = function(req, res) {
+	if (req.session.firstname == undefined) {
+    	res.redirect("/");
+    } else {
     var connection = mysqldb.getConnection();
     connection.query('SELECT * FROM Organization', function(err, rows) {
         if (err)
@@ -371,7 +374,7 @@ exports.home = function(req, res) {
     });
 
     connection.end();
-
+    }
 };
 
 
