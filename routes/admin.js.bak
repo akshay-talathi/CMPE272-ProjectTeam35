@@ -5,8 +5,7 @@ var crypto = require('crypto');
 exports.login = function(req, res) {
     // console.log(mysqldb.getName());
     res.render('login', {
-        page_title: "Login",
-        	message : req.flash('error')
+        page_title: "Login"
     });
 };
 
@@ -24,7 +23,6 @@ exports.logindo = function(req, res) {
 				{
 					console.log(rows);
 					if (rows[0] == undefined) {
-						req.flash('error','Incorrect Login Details. Please put valid Email ID and Password');
 						res.redirect('/');
 					}
 					else

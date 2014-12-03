@@ -11,12 +11,9 @@ var value = randomValueHex(7);
 exports.usersList = function(req, res) {
     var org_id = req.params.id;
     console.log(org_id);
-    if (req.session.firstname == undefined) {
-    	res.redirect("/");
-    } else {
     var connection = mysqldb.getConnection();
     connection.connect();
-    connection.query("SELECT * FROM user where isAdmin = 0 and org_id = " +org_id ,
+    connection.query("SELECT * FROM user where isAdmin = 0 and org_id = ?",[org_id] ,
             function(err, rows) {
 
                 if (err)
@@ -31,7 +28,6 @@ exports.usersList = function(req, res) {
 
             });
     connection.end();
-    }
 };
 exports.addUser = function(req, res) {
 	var org_id = req.params.org_id;
@@ -40,15 +36,9 @@ exports.addUser = function(req, res) {
         message : req.flash('error')
     });
 };
-
-
-
 exports.editUser = function(req, res) {
     console.log("here");
     var id = req.params.id;
-    if (req.session.firstname == undefined) {
-    	res.redirect("/");
-    } else {
     var connection = mysqldb.getConnection();
     console.log("here");
     connection.connect();
@@ -65,16 +55,12 @@ exports.editUser = function(req, res) {
             });
     console.log("here - editUser");
     connection.end();
-    }
 };
 /* Save the customer */
 exports.saveUser = function(req, res) {
     var org_id = req.params.org_id;
     var input = JSON.parse(JSON.stringify(req.body));
     console.log(input);
-    if (req.session.firstname == undefined) {
-    	res.redirect("/");
-    } else {
     var connection = mysqldb.getConnection();
     connection.connect();
     var data = {
@@ -97,7 +83,7 @@ exports.saveUser = function(req, res) {
                         console.log("Found user:" + rows.length);
                         if (!rows.length) {
                             console.log("Here Insert query" + input.firstname + input.lastname);
-                            connection.query("INSERT INTO user set firstname = '" + input.firstname + "',lastname = '" + input.lastname + "',email = '" + input.email + "',password = SHA1('" + input.password + "'),contact = '" + input.contact + "',isActive = 1" ,
+                            connection.query("INSERT INTO user set firstname = '" + input.firstname + "',lastname = '" + input.lastname + "',email = '" + input.email + "',password = SHA1('" + input.password + "'),contact = '" + input.contact + "',isActive = 1,isAdmin = 0" ,
                                             function(err, rows) {
                                                 if (err)
                                                     console.log("Error Inserting: %s",err);
@@ -116,7 +102,7 @@ exports.saveUser = function(req, res) {
                             }
                         }
                     });
-    }
+    
 };/* Save edited customer */
 
 exports.save_edit_user = function(req, res) {
@@ -131,9 +117,6 @@ exports.save_edit_user = function(req, res) {
     var isActive = req.body.isActive;
     var qr = req.params.qr;
     console.log(isActive);
-    if (req.session.firstname == undefined) {
-    	res.redirect("/");
-    } else {
     var connection = mysqldb.getConnection();
     connection.connect();
     console.log(firstname);
@@ -158,7 +141,7 @@ res.redirect('/organizations/' + input.org_id + '/users');
 
                                     });
 // console.log(query.sql); get raw query
-    }
+
 };
 
 exports.resetPassword = function(req, res) {
@@ -167,9 +150,6 @@ exports.resetPassword = function(req, res) {
     var org_id = req.params.org_id;
     console.log("here Reset Password:" +id);
     console.log("here Reset:" +org_id);
-    if (req.session.firstname == undefined) {
-    	res.redirect("/");
-    } else {
     var connection = mysqldb.getConnection();
     connection.connect();
 
@@ -183,7 +163,6 @@ exports.resetPassword = function(req, res) {
 
             });
     console.log("Password Reset complete");
-    }
 };
 
 exports.status_user = function(req, res) {
@@ -192,9 +171,6 @@ exports.status_user = function(req, res) {
     var org_id = req.params.org_id;
     var sid = req.params.sid;
     console.log("here");
-    if (req.session.firstname == undefined) {
-    	res.redirect("/");
-    } else {
     var connection = mysqldb.getConnection();
     connection.connect();
     var data = {
@@ -211,16 +187,12 @@ exports.status_user = function(req, res) {
                 res.redirect('/organizations/' + org_id + '/users');
 
             });
-    }
 };
 
 
 exports.unregUsersList = function(req, res) {
     var org_id = req.param('org_id');
     console.log('org_id: '+org_id);
-    if (req.session.firstname == undefined) {
-    	res.redirect("/");
-    } else {
     var connection = mysqldb.getConnection();
     connection.connect();
     connection.query("SELECT * FROM user where isAdmin = 0 and org_id IS NULL",
@@ -238,16 +210,12 @@ exports.unregUsersList = function(req, res) {
 
             });
     connection.end();
-    }
 };
 
 exports.addUseToOrg = function(req, res) {
 	var id = req.params.id;
     var org_id = req.params.org_id;
     console.log('org_id: '+org_id);
-    if (req.session.firstname == undefined) {
-    	res.redirect("/");
-    } else {
     var connection = mysqldb.getConnection();
     connection.connect();
     connection.query("UPDATE user set org_id = "+org_id+" WHERE id = "+id,
@@ -259,5 +227,4 @@ exports.addUseToOrg = function(req, res) {
         res.redirect('/organizations/' + org_id + '/unregistered/users');
 
     });
-    }
 };

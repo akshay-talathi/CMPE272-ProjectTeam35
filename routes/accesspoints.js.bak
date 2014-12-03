@@ -137,4 +137,4 @@ exports.deleteAccessPoints = function(req, res) {
             });
     connection.end();
     }
-};
+}
