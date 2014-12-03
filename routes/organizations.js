@@ -153,8 +153,7 @@ exports.saveDetails = function(req, res) {
 
     var input = JSON.parse(JSON.stringify(req.body));
     var id = req.params.id;
-    var connection = mysqldb.getConnection();
-    connection.connect();
+    
 
     var data = {
         name : input.name,
