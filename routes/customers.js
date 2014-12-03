@@ -327,12 +327,11 @@ exports.verify = function(req, res) {
 
     var connection = mysqldb.getConnection();
     connection.connect();
-    console.log(email + " : " + hash);
+    console.log("###"+email+"##" + " : " + "###"+hash+"###");
     var result = null;
     var query = connection.query(
-        "select u.user_id from user u join Access a on u.id = a.user_id " + "join AccessPoints ap on ap.id = a.access_id " + "WHERE u.email = ? and ap.access_point_id = ? " + "and a.isAllowed = 1 and a.valid_upto > now()", [email,
-            hash
-        ],
+        "select u.id from user u join Access a on u.id = a.user_id " + "join AccessPoints ap on ap.id = a.access_id " 
+        + "WHERE u.email = ? and ap.access_point_id = ? " + "and a.isAllowed = 1 and a.valid_upto > now()", [email,hash],
         function(err, rows) {
             if (err)
                 console.log("Error fecthing details : %s", err);

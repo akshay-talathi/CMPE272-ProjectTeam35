@@ -103,10 +103,6 @@ function htmlEntities(str) {
 
 function read(a)
 {
-	for(var p in navigator)
-	    x += p + '=' + navigator[p] + "\n";
-	//alert(x);
-	var hash = CryptoJS.SHA1(x);
 	
     var html="";
     if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
@@ -117,6 +113,7 @@ function read(a)
     for(var p in navigator)
         x += p + '=' + navigator[p] + "\n";
     var hash = CryptoJS.SHA1(x);
+    console.log(hash);
     if (window.XMLHttpRequest)
       {// code for IE7+, Firefox, Chrome, Opera, Safari
       xmlhttp=new XMLHttpRequest();
