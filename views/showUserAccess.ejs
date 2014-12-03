@@ -59,7 +59,7 @@
                                    
                                     <div class="table-toolbar">
                                       <div class="btn-group">
-                                         <a href="http://localhost:4300/assignAccess/<%=org_id%>/<%=ap_id%>"><button class="btn btn-success">Grant Access <i class="icon-plus icon-white"></i></button></a>
+                                         <a href="/assignAccess/<%=org_id%>/<%=ap_id%>"><button class="btn btn-success">Grant Access <i class="icon-plus icon-white"></i></button></a>
                                       </div>
                                    </div>
 								    <hr>
@@ -76,7 +76,7 @@
                            
                            					for (var i=0; i<data.length;i++) { %>
                                             <tr class="odd gradeX">
-                                                <td><a class="biz-name" href="http://localhost:4300/updateUserAccess/<%=org_id%>/<%=ap_id%>/<%=data[i].user_id%>" data-hovercard-id="AaSs-2r6KQNe00oJu1ft8Q"><%=data[i].firstname%>&nbsp;<%=data[i].lastname%></a></td>
+                                                <td><a class="biz-name" href="/updateUserAccess/<%=org_id%>/<%=ap_id%>/<%=data[i].user_id%>" data-hovercard-id="AaSs-2r6KQNe00oJu1ft8Q"><%=data[i].firstname%>&nbsp;<%=data[i].lastname%></a></td>
                                                 <td align="center"><%{%>
          											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img height="5px" src = "/images/<%=data[i].isAllowed%>.png" />
          											<%}%>
