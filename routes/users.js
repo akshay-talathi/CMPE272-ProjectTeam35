@@ -26,7 +26,8 @@ exports.usersList = function(req, res) {
                 res.render('users', {
                     page_title : "users - Node.js",
                     data : rows,
-                    org_id : org_id
+                    org_id : org_id,
+                    message : req.flash('error')
                 });
 
             });
@@ -72,9 +73,6 @@ exports.saveUser = function(req, res) {
     var org_id = req.params.org_id;
     var input = JSON.parse(JSON.stringify(req.body));
     console.log(input);
-    if (req.session.firstname == undefined) {
-    	res.redirect("/");
-    } else {
     var connection = mysqldb.getConnection();
     connection.connect();
     var data = {
@@ -116,7 +114,6 @@ exports.saveUser = function(req, res) {
                             }
                         }
                     });
-    }
 };/* Save edited customer */
 
 exports.save_edit_user = function(req, res) {
@@ -178,7 +175,7 @@ exports.resetPassword = function(req, res) {
 
                 if (err)
                     console.log("Error deleting : %s ", err);
-
+                req.flash('error','Password has been reset!');
                 res.redirect('/organizations/' + org_id + '/users');
 
             });
