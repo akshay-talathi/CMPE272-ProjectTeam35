@@ -36,6 +36,9 @@ exports.addUser = function(req, res) {
         message : req.flash('error')
     });
 };
+
+
+
 exports.editUser = function(req, res) {
     console.log("here");
     var id = req.params.id;
