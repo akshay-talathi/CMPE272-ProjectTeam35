@@ -25,7 +25,18 @@
                      <span class="icon-bar"></span>
                     </a>
                    <a class="brand" href="/home">Virtual Badge</a>
+                    
                     <div class="nav-collapse collapse">
+                         <ul class="nav pull-right">
+			               			<li>
+			                    		<a href="#" role="button" class="" > <i class="icon-user"></i> <%=sess.firstname%>&nbsp;<%=sess.lastname%></a>
+			 	                	</li>
+			 	                	<li>
+			 	                		<a href="/logout" role="button" class=""> Logout</a>
+			 	                	</li>
+			             		</ul>
+                        
+             	</div>
                          <ul class="nav">
                             <li class="">
                                 <a href="/organizations">Manage Organization</a>
@@ -45,9 +56,7 @@
                      <div class="row-fluid">
                         <!-- block -->
                         <div class="block">
-                            <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Bootstrap dataTables with Toolbar</div>
-                            </div>
+                            <br><br><br>
                             <div class="block-content collapse in">
                                 <div class="span12">
                                     <hr>

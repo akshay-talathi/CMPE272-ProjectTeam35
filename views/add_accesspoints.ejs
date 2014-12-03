@@ -17,14 +17,37 @@
     </head>
 
         <body>
+        <div class="navbar navbar-fixed-top">
+    	<div class="navbar-inner">
+	        <div class="container-fluid">
+  	        	<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+ 	            	<span class="icon-bar"></span>
+                 	<span class="icon-bar"></span>
+              	</a>
+              <a class="brand" href="/home">Virtual Badge</a>
+              	<div class="nav-collapse collapse">
+             		 <ul class="nav pull-right">
+			               			<li>
+			                    		<a href="#" role="button" class="" > <i class="icon-user"></i> <%=sess.firstname%>&nbsp;<%=sess.lastname%></a>
+			 	                	</li>
+			 	                	<li>
+			 	                		<a href="/logout" role="button" class=""> Logout</a>
+			 	                	</li>
+			             		</ul>
+       			</div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        
              <div class="form-wrap">  
             
            
             <form class="form-horizontal" action="/organizations/<%=org_id%>/accesspoints/" method="POST">
   <fieldset>
-    <div id="legend" style="margin-left: 20px;">
-      <legend class="">Add Access Point</legend>
-    </div>
+    <br>
+    <br>
+    <br>
      <div id="legend" style="margin-left: 20px;" align="center">
       <legend class="">Add Access Point</legend>
     </div>
@@ -64,31 +87,7 @@
           </div>
         </div>
 
-        <div class="navbar navbar-fixed-top">
-    	<div class="navbar-inner">
-	        <div class="container-fluid">
-  	        	<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
- 	            	<span class="icon-bar"></span>
-                 	<span class="icon-bar"></span>
-              	</a>
-              <a class="brand" href="/home">Virtual Badge</a>
-              	<div class="nav-collapse collapse">
-             		 <ul class="nav pull-right">
-			               			<li>
-			                    		<a href="#" role="button" class="" > <i class="icon-user"></i> <%=sess.firstname%>&nbsp;<%=sess.lastname%></a>
-			 	                	</li>
-			 	                	<li>
-			 	                		<a href="/logout" role="button" class=""> Logout</a>
-			 	                	</li>
-			             		</ul>
-       			</div>
-                    <!--/.nav-collapse -->
-                </div>
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
+        
         <div>
         <!--start of div for tables -->
         

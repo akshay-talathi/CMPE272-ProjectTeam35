@@ -92,7 +92,8 @@ exports.saveDetailsAccessPoints = function(req, res) {
 
     var data = {
         id : id,
-        name : input.name
+        name : input.name,
+        access_point_id : input.access_point_id
     };
     if (req.session.firstname == undefined) {
         res.redirect("/");
@@ -101,7 +102,7 @@ exports.saveDetailsAccessPoints = function(req, res) {
     console.log(data);
     connection.connect();
 
-    var query = connection.query("update accesspoints set name = '"+input.name+"', organization_id = "+org_id+" where id = "+id,
+    var query = connection.query("update accesspoints set name = '"+input.name+"', access_point_id = '"+input.access_point_id+"',organization_id = "+org_id+" where id = "+id,
                     function(err, rows) {
                         if (err)
 

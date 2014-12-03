@@ -15,50 +15,8 @@
   <script src="/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     
     </head>
-
-        <body>
-  
-            
-             <div class="form-wrap">  
-            
-    
-            <form class="form-horizontal" action="/organizations/<%=org_id%>/accesspoints/<%=id%>" method="POST">
-  <fieldset>
-    <div id="legend" style="margin-left: 20px;">
-      <legend class="">Edit Access Point</legend>
-    </div>
-	<div id="legend" style="margin-left: 20px;" align="center">
-      <legend class="">Edit Access Point</legend>
-    </div>
-    <div class="control-group">
-      <!-- Access Point Name -->
-      <label class="control-label"  for="name">Access Point Name</label>
-      <div class="controls">
-        <input type="text" id="name" name="name" value="<%=data[0].name%>" class="input-xlarge" required>
-      </div>
-    </div>
-
- 
-    <div class="control-group">
-      <!-- Button -->
-      <div class="controls">
-        <button class="btn btn-success" value="save" name="Submit" >Save</button>
-      	<button type="button" class="btn btn-danger" name="cancel" onClick = "location.href = '/organizations/<%=org_id%>/accesspoints';">Cancel</button>
-      </div>
-    </div>
-  </fieldset>
-</form>
-            
-        
-            
-            
-            
-            
-            </div>
-          </div>
-        </div>
-
-        <div class="navbar navbar-fixed-top">
+		
+		        <div class="navbar navbar-fixed-top">
     	<div class="navbar-inner">
 	        <div class="container-fluid">
   	        	<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
@@ -86,10 +44,60 @@
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <div>
+        
+		
+		
+		
+        <body>
+  
+            
+             <div class="form-wrap">  
+            
+    
+            <form class="form-horizontal" action="/organizations/<%=org_id%>/accesspoints/<%=id%>" method="POST">
+  <fieldset>
+    <br><br><br>
+	<div id="legend" style="margin-left: 20px;" align="center">
+      <legend class="">Edit Access Point</legend>
+    </div>
+    <div class="control-group">
+      <!-- Access Point Name -->
+      <label class="control-label"  for="name">Access Point Name</label>
+      <div class="controls">
+        <input type="text" id="name" name="name" value="<%=data[0].name%>" class="input-xlarge" required>
+      </div>
+    </div>
+
+
+	<div class="control-group">
+	
+	      <!-- Access Point id -->
+	      
+	      <label class="control-label"  for="access-point_id">Access Point ID</label>
+	      <div class="controls">
+	        <input type="text" id="access_point_id" name="access_point_id" value="<%=data[0].access_point_id%>" class="input-xlarge" required>
+	      </div>
+	    </div>
+ 
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button class="btn btn-success" value="save" name="Submit" >Save</button>
+      	<button type="button" class="btn btn-danger" name="cancel" onClick = "location.href = '/organizations/<%=org_id%>/accesspoints';">Cancel</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+            
+        
+            
+            
+            
+            
+            </div>
+          </div>
+        </div>
+
             
 
         <!--start of div for tables -->
