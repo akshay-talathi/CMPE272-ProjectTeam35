@@ -95,7 +95,7 @@ exports.saveUser = function(req, res) {
                         console.log("Found user:" + rows.length);
                         if (!rows.length) {
                             console.log("Here Insert query" + input.firstname + input.lastname);
-                            connection.query("INSERT INTO user set firstname = '" + input.firstname + "',lastname = '" + input.lastname + "',email = '" + input.email + "',password = SHA1('" + input.password + "'),contact = '" + input.contact + "',isActive = 1" ,
+                            connection.query("INSERT INTO user set firstname = '" + input.firstname + "',lastname = '" + input.lastname + "',email = '" + input.email + "',password = SHA1('" + input.password + "'),contact = '" + input.contact + "',isActive = 1, isAdmin=0" ,
                                             function(err, rows) {
                                                 if (err)
                                                     console.log("Error Inserting: %s",err);
