@@ -95,7 +95,7 @@ exports.logindo = function(req, res) {
 ///////prashant luthra/////////
 
 exports.listAccessPoints = function(req, res){
-	if(req.session == null)
+	if(req.session.firstname == undefined)
 	{
 		redirect('/');
 	}
@@ -121,6 +121,13 @@ exports.showUserAccess = function(req,res){
 	var name = req.params.name;
 	var connection = mysqldb.getConnection();
 	connection.connect();
+	
+	if(req.session.firstname == undefined)
+		{
+		res.redirect('/');
+		}
+	else
+		{
 	connection.query("SELECT ap.id as ap_id,ap.name as ap_name, u.firstname as firstname,u.lastname as lastname, a.user_id as user_id, a.isAllowed as isAllowed, a.valid_upto as valid_upto from accesspoints ap join access a join user u WHERE a.access_id = ap.id AND a.user_id= u.id AND a.access_id = ? AND ap.organization_id = ?", [id, org_id], function(err, rows){
 		if(err)
 			console.log("Error fetching results : %s", err);
@@ -132,7 +139,9 @@ exports.showUserAccess = function(req,res){
 		
 		
 	});
+		}
 	connection.end();
+		
 }
 
 exports.assignAccess = function(req,res){
@@ -142,6 +151,13 @@ exports.assignAccess = function(req,res){
 	console.log("org_id: " +org_id);
 	var connection = mysqldb.getConnection();
 	connection.connect();
+	
+	if(req.session.firstname == undefined)
+	{
+	res.redirect('/');
+	}
+	else
+	{
 	connection.query("SELECT * from user where org_id = ?",[org_id], function(err, rows){
 		if(err)
 			console.log("Error getting values % s", err);
@@ -149,6 +165,7 @@ exports.assignAccess = function(req,res){
 		res.render('assignAccess', {page_title:"Assign Access", data:rows, ap_id: id, org_id: org_id});
 		
 	});
+	}
 	connection.end();
 }
 
@@ -164,6 +181,11 @@ exports.postAccess = function(req, res){
 		var connection = mysqldb.getConnection();
 		connection.connect();
 		
+		if(req.session.firstname == undefined)
+		{
+		res.redirect('/');
+		}
+		else{
 		//console.log(valid_string);
 		var data1 = {
 					access_id: ap_id,
@@ -186,7 +208,7 @@ exports.postAccess = function(req, res){
 						connection.end();
 						}
 				});
-			
+		}
 		
 }
 
@@ -201,6 +223,12 @@ exports.updateUserAccess = function(req,res){
 	connection.connect();
 	//var queryString = 'SELECT u.id as u_id,u.email as email, a.access_id as access_id, a.isAllowed as isAllowed, a.valid_upto as valid_upto FROM user u JOIN access a WHERE u.id = a.user_id AND a.access_id = ?  AND a.user_id = ?';
 	//connection.query(queryString, [ap_id],[user_id], function(err, rows){;
+	
+	if(req.session.firstname == undefined)
+	{
+	res.redirect('/');
+	}
+	else{
 	connection.query("SELECT u.id as u_id,u.email as email, a.access_id as access_id, a.isAllowed as isAllowed, a.valid_upto as valid_upto FROM user u JOIN access a WHERE u.id = a.user_id AND a.access_id = ?  AND a.user_id = ?",[ap_id,user_id], function(err, rows){
 		if(err)
 			console.log("Error getting values % s", err);
@@ -210,7 +238,7 @@ exports.updateUserAccess = function(req,res){
 		//console.log(data);
 		
 	});
-	
+	}
 	connection.end();
 }
 
@@ -226,6 +254,12 @@ exports.postUpdate = function(req,res){
 	console.log(typeof(input.validity));
 	//var validity = new Date(input.validity);
 	//console.log(typeof(validity));
+	
+	if(req.session.firstname == undefined)
+	{
+	res.redirect('/');
+	}
+	else{
 	var connection = mysqldb.getConnection();
 	connection.connect();
 	
@@ -249,6 +283,7 @@ exports.postUpdate = function(req,res){
 			}
 		//connection.end();
 	});
+	}
 }
 
 exports.logout = function(req, res) {
