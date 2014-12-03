@@ -67,6 +67,8 @@ exports.saveOrg = function(req, res) {
 }
 */
 
+ 
+
 exports.saveOrg = function(req, res) {
 
     var input = JSON.parse(JSON.stringify(req.body));
@@ -80,84 +82,43 @@ exports.saveOrg = function(req, res) {
     var connection = mysqldb.getConnection();
     console.log(data);
     connection.connect();
-    var query = connection.query("Insert into Organization set ?", data,
+    var query = connection.query("Select * from Organization where name= ?",[ data.name ],
             function(err, rows) {
-                if (err)
+                if (err){
                     console.log("Error inserting : %s", err);
-                req.flash('error','Organization name already added!');
-                connection.end();
-                res.redirect('/organizations/add');
+                    connection.end();
+                    res.redirect('/organizations');
+            }
+                
+                if (!rows.length) {
+                    console.log("Here Insert query" );
+                    connection.query("Insert into Organization set ? " , data,
+                                    function(err, rows) {
+                                        if (err)
+                                            console.log("Error Inserting: %s",err);
+                                        req.flash('error','');
+                                        connection.end();
+                                        res.redirect('/organizations');
+
+                                    });
+
+                } else {
+                    if (rows[0].email == input.email) {
+                        req.flash('error','Organization name already exists ! please enter different name.');
+                        connection.end();
+                        res.redirect('/organizations/add');
+                        
+                    }
+                }
+                
+                
             });
     }
 }
 
-
-/*
-exports.saveUser = function(req, res) {
-    var org_id = req.params.org_id;
-    var input = JSON.parse(JSON.stringify(req.body));
-    console.log(input);
-    var connection = mysqldb.getConnection();
-    connection.connect();
-    var data = {
-
-        firstname : input.firstname,
-        lastname : input.lastname,
-        email : input.email,
-        contact : input.contact,
-        isActive : 1,
-        qr : null
-    };
-    var query = connection.query("SELECT * from user WHERE email = ? ",[ data.email ],
-                    function(err, rows) {
-                        
-                        if (err){
-                                    console.log("Error fecthing details : %s", err);
-                                    connection.end();
-                                    res.redirect('/register');
-                        }
-                        console.log("Found user:" + rows.length);
-                        if (!rows.length) {
-                            console.log("Here Insert query" + input.firstname + input.lastname);
-                            connection.query("INSERT INTO user set firstname = '" + input.firstname + "',lastname = '" + input.lastname + "',email = '" + input.email + "',password = SHA1('" + input.password + "'),contact = '" + input.contact + "',isActive = 1" ,
-                                            function(err, rows) {
-                                                if (err)
-                                                    console.log("Error Inserting: %s",err);
-                                                req.flash('error','You are registered!');
-                                                connection.end();
-                                                res.redirect('/register');
-
-                                            });
-
-                        } else {
-                            if (rows[0].email == input.email) {
-                                req.flash('error','Email ID already exists. Please try another email.');
-                                connection.end();
-                                res.redirect('/register');
-                                
-                            }
-                        }
-                    });
-    
-};
+ 
 
 
-*/
-/*exports.home = function(req, res) {
-    var connection = mysqldb.getConnection();
-    connection.query('SELECT * FROM Organization', function(err, rows) {
-        if (err)
-            console.log("Error Selecting : %s ", err);
-        console.log(rows);
-        res.render('home', {
-            page_title : "home",
-            data : rows
-        });
-    });
-
-    connection.end();
-
-};*/
 
 
 exports.editOrg = function(req, res) {
@@ -192,6 +153,9 @@ exports.saveDetails = function(req, res) {
 
     var input = JSON.parse(JSON.stringify(req.body));
     var id = req.params.id;
+    var connection = mysqldb.getConnection();
+    connection.connect();
+
     var data = {
         name : input.name,
         description : input.description,
@@ -236,4 +200,4 @@ exports.deleteOrganization = function(req, res) {
             });
     connection.end();
     }
-};
+}

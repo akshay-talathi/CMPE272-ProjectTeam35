@@ -26,18 +26,19 @@ exports.usersList = function(req, res) {
                 res.render('users', {
                     page_title : "users - Node.js",
                     data : rows,
-                    org_id : org_id,
-                    message : req.flash('error')
+                    org_id : org_id
                 });
 
             });
     connection.end();
     }
 };
+
+
 exports.addUser = function(req, res) {
 	var org_id = req.params.org_id;
     res.render('add_user', {
-        page_title : "Add Users-Node.js",
+        page_title : "Add Users",
         message : req.flash('error')
     });
 };
@@ -51,7 +52,7 @@ exports.editUser = function(req, res) {
     	res.redirect("/");
     } else {
     var connection = mysqldb.getConnection();
-    console.log("here");
+    console.log("here at editUser");
     connection.connect();
     connection.query('SELECT * FROM user WHERE id = ?', [ id ],
             function(err, rows) {
@@ -73,6 +74,9 @@ exports.saveUser = function(req, res) {
     var org_id = req.params.org_id;
     var input = JSON.parse(JSON.stringify(req.body));
     console.log(input);
+    if (req.session.firstname == undefined) {
+    	res.redirect("/");
+    } else {
     var connection = mysqldb.getConnection();
     connection.connect();
     var data = {
@@ -95,7 +99,7 @@ exports.saveUser = function(req, res) {
                         console.log("Found user:" + rows.length);
                         if (!rows.length) {
                             console.log("Here Insert query" + input.firstname + input.lastname);
-                            connection.query("INSERT INTO user set firstname = '" + input.firstname + "',lastname = '" + input.lastname + "',email = '" + input.email + "',password = SHA1('" + input.password + "'),contact = '" + input.contact + "',isActive = 1, isAdmin=0" ,
+                            connection.query("INSERT INTO user set firstname = '" + input.firstname + "',lastname = '" + input.lastname + "',email = '" + input.email + "',password = SHA1('" + input.password + "'),contact = '" + input.contact + "',isActive = 1" ,
                                             function(err, rows) {
                                                 if (err)
                                                     console.log("Error Inserting: %s",err);
@@ -114,6 +118,7 @@ exports.saveUser = function(req, res) {
                             }
                         }
                     });
+    }
 };/* Save edited customer */
 
 exports.save_edit_user = function(req, res) {
@@ -175,7 +180,7 @@ exports.resetPassword = function(req, res) {
 
                 if (err)
                     console.log("Error deleting : %s ", err);
-                req.flash('error','Password has been reset!');
+
                 res.redirect('/organizations/' + org_id + '/users');
 
             });
