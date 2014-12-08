@@ -15,7 +15,7 @@ Username – `admin@vb.com` , password – `admin`.
 #####4.	Registered use mobile device to login into the system using login credentials and generated QR code will be displayed on the mobile screen.
 #####5.	User will scan the QR code and system will validate user access and display the status on the screen.
 
-[drag]: https://raw.github.com/adjust/sdks/master/Resources/ios/drag3.png
+[drag]: https://cloud.githubusercontent.com/assets/8674941/5333858/bd24daa0-7e39-11e4-8a3f-9edde6c370b3.png
 
 
 ##URL of app-
