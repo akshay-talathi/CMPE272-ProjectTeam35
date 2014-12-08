@@ -35,6 +35,12 @@ Generated QR code:
 QR scanner screen:
 ![][screen]
 
+Access granted to user:
+![][granted]
+
+Access denied to user:
+![][denied]
+
 #####5.	User will scan the QR code and system will validate user access and display the status on the screen.
 
 [drag]: https://cloud.githubusercontent.com/assets/8674941/5333858/bd24daa0-7e39-11e4-8a3f-9edde6c370b3.png
@@ -45,8 +51,8 @@ QR scanner screen:
 [mobile-login]: https://cloud.githubusercontent.com/assets/8674941/5333938/a7ef49c0-7e3b-11e4-9175-b924b9d1c836.png
 [QR]: https://cloud.githubusercontent.com/assets/8674941/5333942/b4679180-7e3b-11e4-9691-ff07e3fc45a4.png
 [screen]: https://cloud.githubusercontent.com/assets/8674941/5333944/be717cf4-7e3b-11e4-8d9c-dec102c1f717.png
-
-
+[granted]: https://cloud.githubusercontent.com/assets/8674941/5346997/e7dc5ef8-7ed9-11e4-9638-140e65223785.png
+[denied]: https://cloud.githubusercontent.com/assets/8674941/5346995/e5d37506-7ed9-11e4-9158-75b1133ded1b.png
 ## Tools
 
 Created with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)
