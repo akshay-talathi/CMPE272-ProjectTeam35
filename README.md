@@ -7,6 +7,9 @@ The whole concept of it is to give user valid access by scanning QR code generat
 ##URL of app-
 (http://virtual-badge.mybluemix.net/)
 
+We used Sencha Touch to develop mobile interface for login, where the user login using his credentials and he gets the QR code after successful login. The mobile app was hosted on XAMP server which was access over the internet on the phone.
+Using Sencha touch we can develop rich HTML5 CSS3 rich client mobile application.
+
 ## Working
 
 #####1.	User registers into the system with login credentials.
