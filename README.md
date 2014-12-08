@@ -3,7 +3,6 @@
 # Virtual-Badge
 
 ## Usage
-![][drag]https://cloud.githubusercontent.com/assets/8674941/5333675/884f37c2-7e33-11e4-96e1-114a19fa32e1.png
 
 ## Developing
 
