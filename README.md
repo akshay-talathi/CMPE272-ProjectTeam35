@@ -11,13 +11,35 @@ The whole concept of it is to give user with valid access will be detected by sc
 ![][drag]
 #####2.	For the project purpose we have assigned admin rights to :
 Username – `admin@vb.com` , password – `admin`.
+![][admin]
 #####3.	Admin will log into the system and manage organizations, manage access points of organizations and grant access to registered users.
+Manage Organizations:
+![][org]
+Manage Access Points:
+![][access-pt]
+Manage Users : 
+![][user]
 #####4.	Registered use mobile device to login into the system using login credentials and generated QR code will be displayed on the mobile screen.
+
+User login on mobile:
+![][mobile-login]
+
+Generated QR code:
+![][QR]
+
+QR scanner screen:
+![][screen]
+
 #####5.	User will scan the QR code and system will validate user access and display the status on the screen.
 
 [drag]: https://cloud.githubusercontent.com/assets/8674941/5333858/bd24daa0-7e39-11e4-8a3f-9edde6c370b3.png
-
-
+[admin]: https://cloud.githubusercontent.com/assets/8674941/5333891/e992ecd4-7e3a-11e4-8ea4-1b62c65344d4.png
+[org]: https://cloud.githubusercontent.com/assets/8674941/5333893/f29f8c1a-7e3a-11e4-9199-71a980087c12.png
+[user]: https://cloud.githubusercontent.com/assets/8674941/5333895/fa724d38-7e3a-11e4-861d-e7dc70cff677.png
+[access-pt]: https://cloud.githubusercontent.com/assets/8674941/5333894/f5c34170-7e3a-11e4-9709-fe2315a63023.png
+[mobile-login]: https://cloud.githubusercontent.com/assets/8674941/5333938/a7ef49c0-7e3b-11e4-9175-b924b9d1c836.png
+[QR]: https://cloud.githubusercontent.com/assets/8674941/5333942/b4679180-7e3b-11e4-9691-ff07e3fc45a4.png
+[screen]: https://cloud.githubusercontent.com/assets/8674941/5333944/be717cf4-7e3b-11e4-8d9c-dec102c1f717.png
 ##URL of app-
 (http://virtual-badge.mybluemix.net/)
 
