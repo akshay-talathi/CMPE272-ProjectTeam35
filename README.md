@@ -35,13 +35,14 @@ Generated QR code:
 QR scanner screen:
 ![][screen]
 
+#####5.	User will scan the QR code and system will validate user access and display the status on the screen.
+
 Access granted to user:
 ![][granted]
 
 Access denied to user:
 ![][denied]
 
-#####5.	User will scan the QR code and system will validate user access and display the status on the screen.
 
 [drag]: https://cloud.githubusercontent.com/assets/8674941/5333858/bd24daa0-7e39-11e4-8a3f-9edde6c370b3.png
 [admin]: https://cloud.githubusercontent.com/assets/8674941/5333891/e992ecd4-7e3a-11e4-8ea4-1b62c65344d4.png
