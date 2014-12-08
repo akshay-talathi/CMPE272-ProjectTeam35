@@ -15,6 +15,9 @@ Username – `admin@vb.com` , password – `admin`.
 #####4.	Registered use mobile device to login into the system using login credentials and generated QR code will be displayed on the mobile screen.
 #####5.	User will scan the QR code and system will validate user access and display the status on the screen.
 
+[login] :  https://cloud.githubusercontent.com/assets/8674941/5333858/bd24daa0-7e39-11e4-8a3f-9edde6c370b3.png
+
+
 ##URL of app-
 (http://virtual-badge.mybluemix.net/)
 
@@ -24,4 +27,3 @@ Created with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)
  ([Eclipse Marketplace](http://marketplace.eclipse.org/content/nodeclipse), [site](http://www.nodeclipse.org))   
 
 Nodeclipse is free open-source project that grows with your contributions.
-[login] :  https://cloud.githubusercontent.com/assets/8674941/5333858/bd24daa0-7e39-11e4-8a3f-9edde6c370b3.png
