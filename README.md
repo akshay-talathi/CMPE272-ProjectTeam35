@@ -8,6 +8,7 @@ The whole concept of it is to give user with valid access will be detected by sc
 ## Working
 
 #####1.	User registers into the system with login credentials.
+![][login]
 #####2.	For the project purpose we have assigned admin rights to :
 Username – `admin@vb.com` , password – `admin`.
 #####3.	Admin will log into the system and manage organizations, manage access points of organizations and grant access to registered users.
@@ -23,3 +24,4 @@ Created with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)
  ([Eclipse Marketplace](http://marketplace.eclipse.org/content/nodeclipse), [site](http://www.nodeclipse.org))   
 
 Nodeclipse is free open-source project that grows with your contributions.
+[login] :  https://cloud.githubusercontent.com/assets/8674941/5333858/bd24daa0-7e39-11e4-8a3f-9edde6c370b3.png
