@@ -8,14 +8,14 @@ The whole concept of it is to give user with valid access will be detected by sc
 ## Working
 
 #####1.	User registers into the system with login credentials.
-![][login]
+![][drag]
 #####2.	For the project purpose we have assigned admin rights to :
 Username – `admin@vb.com` , password – `admin`.
 #####3.	Admin will log into the system and manage organizations, manage access points of organizations and grant access to registered users.
 #####4.	Registered use mobile device to login into the system using login credentials and generated QR code will be displayed on the mobile screen.
 #####5.	User will scan the QR code and system will validate user access and display the status on the screen.
 
-[login] :  https://cloud.githubusercontent.com/assets/8674941/5333858/bd24daa0-7e39-11e4-8a3f-9edde6c370b3.png
+[drag]: https://raw.github.com/adjust/sdks/master/Resources/ios/drag3.png
 
 
 ##URL of app-
